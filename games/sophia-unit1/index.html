@@ -502,8 +502,8 @@
       <img src="../../assets/stitch.png" alt="Stitch" style="width:44px;height:44px;object-fit:contain;">
     </div>
     <div class="topbar-info">
-      <div class="topbar-title">Sophia — Athlete's Lifestyle</div>
-      <div class="topbar-sub">Unit 1 · Chapter 1</div>
+      <div class="topbar-title">Sophia — <span data-pt="Estilo de Vida do Atleta">Athlete's Lifestyle</span></div>
+      <div class="topbar-sub"><span data-pt="Unidade 1 · Capítulo 1">Unit 1 · Chapter 1</span></div>
     </div>
     <div class="topbar-score">⭐ <span id="score-display">0</span></div>
   </div>
@@ -512,15 +512,15 @@
   <div id="screen-start" class="screen active">
     <div class="start-screen">
       <img src="../../assets/stitch.png" alt="Stitch" class="start-hero" style="width:150px;height:150px;object-fit:contain;">
-      <h1 class="start-title">Athlete's Lifestyle! 🏃‍♀️</h1>
-      <p class="start-desc">Hi, Sophia! Let's train with Stitch and learn about self-control, healthy foods, sports and numbers!</p>
+      <h1 class="start-title"><span data-pt="Estilo de Vida do Atleta!">Athlete's Lifestyle!</span> 🏃‍♀️</h1>
+      <p class="start-desc"><span data-pt="Oi, Sophia! Vamos treinar com o Stitch e aprender sobre autocontrole, alimentos saudáveis, esportes e números!">Hi, Sophia! Let's train with Stitch and learn about self-control, healthy foods, sports and numbers!</span></p>
       <div class="sections-preview">
-        <div class="sec-item"><span style="font-size:1.5rem">🧠</span> Self-Control <span class="si-count">6 questions</span></div>
-        <div class="sec-item"><span style="font-size:1.5rem">🥗</span> Healthy Foods from Plants <span class="si-count">6 questions</span></div>
-        <div class="sec-item"><span style="font-size:1.5rem">⚽</span> Sports &amp; Action Verbs <span class="si-count">8 questions</span></div>
-        <div class="sec-item"><span style="font-size:1.5rem">🔢</span> Numbers by Tens <span class="si-count">6 questions</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">🧠</span> <span data-pt="Autocontrole">Self-Control</span> <span class="si-count"><span data-pt="6 perguntas">6 questions</span></span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">🥗</span> <span data-pt="Alimentos Saudáveis de Plantas">Healthy Foods from Plants</span> <span class="si-count"><span data-pt="6 perguntas">6 questions</span></span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">⚽</span> <span data-pt="Esportes e Verbos de Ação">Sports &amp; Action Verbs</span> <span class="si-count"><span data-pt="8 perguntas">8 questions</span></span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">🔢</span> <span data-pt="Números de Dez em Dez">Numbers by Tens</span> <span class="si-count"><span data-pt="6 perguntas">6 questions</span></span></div>
       </div>
-      <button class="start-btn" onclick="startGame()">🐾 Let's Train!</button>
+      <button class="start-btn" onclick="startGame()">🐾 <span data-pt="Vamos Treinar!">Let's Train!</span></button>
     </div>
   </div>
 
@@ -547,7 +547,7 @@
       <div class="reward-desc" id="reward-desc">Great job! Time for a mini-game!</div>
       <div class="game-instructions" id="game-instructions"></div>
       <div class="game-area ep-game-container" id="game-area"></div>
-      <button class="continue-btn" id="continue-btn" onclick="advanceSection()">Next Section ▶</button>
+      <button class="continue-btn" id="continue-btn" onclick="advanceSection()"><span data-pt="Próximo Capítulo">Next Section</span> ▶</button>
     </div>
   </div>
 
@@ -560,18 +560,18 @@
         <circle cx="60" cy="60" r="44" fill="#4488dd" opacity=".4"/>
         <text x="60" y="78" text-anchor="middle" font-size="56" fill="#FFD700">🏆</text>
       </svg>
-      <h2 class="done-title">Amazing, Sophia! 🐾</h2>
-      <p class="done-sub">You completed Unit 1! Stitch is so proud of you! 💙</p>
+      <h2 class="done-title"><span data-pt="Incrível">Amazing</span>, Sophia! 🐾</h2>
+      <p class="done-sub"><span data-pt="Você completou a Unidade 1! O Stitch está muito orgulhoso de você!">You completed Unit 1! Stitch is so proud of you!</span> 💙</p>
       <div class="done-stats">
-        <div class="stat-pill" id="stat-correct">0 <span>correct</span></div>
-        <div class="stat-pill" id="stat-total">0 <span>attempts</span></div>
-        <div class="stat-pill" id="stat-pct">0% <span>accuracy</span></div>
+        <div class="stat-pill" id="stat-correct">0 <span><span data-pt="corretas">correct</span></span></div>
+        <div class="stat-pill" id="stat-total">0 <span><span data-pt="tentativas">attempts</span></span></div>
+        <div class="stat-pill" id="stat-pct">0% <span><span data-pt="precisão">accuracy</span></span></div>
       </div>
       <div class="ep-stars" id="done-stars" style="margin-bottom:28px;">
         <span class="ep-star">⭐</span><span class="ep-star">⭐</span><span class="ep-star">⭐</span>
       </div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <button class="start-btn" style="font-size:1.1rem;padding:13px 30px;" onclick="restartGame()">🔄 Play Again</button>
+        <button class="start-btn" style="font-size:1.1rem;padding:13px 30px;" onclick="restartGame()">🔄 <span data-pt="Jogar Novamente">Play Again</span></button>
         <a href="../../index.html" class="start-btn" style="font-size:1.1rem;padding:13px 30px;background:linear-gradient(135deg,#d32f2f,#8B0000);">🏠 Menu</a>
       </div>
     </div>
@@ -581,6 +581,9 @@
   <script src="../../lib/reward-games.js"></script>
   <script src="../../lib/games/builder.js"></script>
   <script>
+    EduPlay.Translation.init();
+    const t = EduPlay.Translation.t.bind(EduPlay.Translation);
+
     // ─────────────────────────────────────────────────────────
     // CONTENT — Unit 1, Chapter 1: Athlete's Lifestyle
     // ─────────────────────────────────────────────────────────
@@ -589,16 +592,16 @@
       // ── SECTION 1: Self-Control ──────────────────────────────
       {
         id: 'self-control',
-        title: 'Self-Control',
-        desc: 'Athletes need self-control to get good results!',
+        title: t('Self-Control', 'Autocontrole'),
+        desc: t('Athletes need self-control to get good results!', 'Atletas precisam de autocontrole para obter bons resultados!'),
         emoji: '🧠',
         questions: [
           {
             id: 'sc1', type: 'truefalse',
-            text: 'Self-control is…',
+            text: t('Self-control is…', 'Autocontrole é…'),
             questionEmoji: '⏰',
             audio: 'to wake up early',
-            hint: 'To wake up early — is this self-control?',
+            hint: t('To wake up early', 'Acordar cedo') + ' — ' + t('is this self-control?', 'isso é autocontrole?'),
             hintEmoji: '💡',
             correctAnswer: true,   // YES
             yesLabel: 'Yes! ✅',
@@ -606,10 +609,10 @@
           },
           {
             id: 'sc2', type: 'truefalse',
-            text: 'Self-control is…',
+            text: t('Self-control is…', 'Autocontrole é…'),
             questionEmoji: '🥗',
             audio: 'to eat healthy food',
-            hint: 'To eat healthy food — is this self-control?',
+            hint: t('To eat healthy food', 'Comer comida saudável') + ' — ' + t('is this self-control?', 'isso é autocontrole?'),
             hintEmoji: '💡',
             correctAnswer: true,
             yesLabel: 'Yes! ✅',
@@ -617,10 +620,10 @@
           },
           {
             id: 'sc3', type: 'truefalse',
-            text: 'Self-control is…',
+            text: t('Self-control is…', 'Autocontrole é…'),
             questionEmoji: '👊',
             audio: 'to fight with friends',
-            hint: 'To fight with friends — is this self-control?',
+            hint: t('To fight with friends', 'Brigar com os amigos') + ' — ' + t('is this self-control?', 'isso é autocontrole?'),
             hintEmoji: '💡',
             correctAnswer: false,  // NO
             yesLabel: 'Yes! ✅',
@@ -628,10 +631,10 @@
           },
           {
             id: 'sc4', type: 'truefalse',
-            text: 'Self-control is…',
+            text: t('Self-control is…', 'Autocontrole é…'),
             questionEmoji: '🏃',
             audio: 'to practice sports',
-            hint: 'To practice sports — is this self-control?',
+            hint: t('To practice sports', 'Praticar esportes') + ' — ' + t('is this self-control?', 'isso é autocontrole?'),
             hintEmoji: '💡',
             correctAnswer: true,
             yesLabel: 'Yes! ✅',
@@ -639,10 +642,10 @@
           },
           {
             id: 'sc5', type: 'truefalse',
-            text: 'Self-control is…',
+            text: t('Self-control is…', 'Autocontrole é…'),
             questionEmoji: '🎮',
             audio: 'to play games all the time',
-            hint: 'To play games all the time — is this self-control?',
+            hint: t('To play games all the time', 'Jogar videogame o tempo todo') + ' — ' + t('is this self-control?', 'isso é autocontrole?'),
             hintEmoji: '💡',
             correctAnswer: false,
             yesLabel: 'Yes! ✅',
@@ -650,16 +653,16 @@
           },
           {
             id: 'sc6', type: 'multiple',
-            text: 'Paul wrote: "Every athlete exercises…"',
+            text: t('Paul wrote: "Every athlete exercises…"', 'Paulo escreveu: "Todo atleta se exercita…"'),
             questionEmoji: '📜',
             audio: 'every athlete exercises self-control',
-            hint: '1 Corinthians 9:25 — Paul\'s Bible Gem!',
+            hint: t("1 Corinthians 9:25 — Paul's Bible Gem!", "1 Coríntios 9:25 — Joia Bíblica do Paulo!"),
             hintEmoji: '📖',
             options: [
-              { id: 'a', label: 'self-control', correct: true },
-              { id: 'b', label: 'basketball', correct: false },
-              { id: 'c', label: 'swimming', correct: false },
-              { id: 'd', label: 'running', correct: false },
+              { id: 'a', label: t('self-control', 'autocontrole'), correct: true },
+              { id: 'b', label: t('basketball', 'basquete'), correct: false },
+              { id: 'c', label: t('swimming', 'natação'), correct: false },
+              { id: 'd', label: t('running', 'corrida'), correct: false },
             ]
           },
         ]
@@ -668,80 +671,80 @@
       // ── SECTION 2: Healthy Foods from Plants ─────────────────
       {
         id: 'healthy-foods',
-        title: 'Healthy Foods from Plants',
-        desc: 'Many healthy foods come from plants!',
+        title: t('Healthy Foods from Plants', 'Alimentos Saudáveis de Plantas'),
+        desc: t('Many healthy foods come from plants!', 'Muitos alimentos saudáveis vêm de plantas!'),
         emoji: '🥗',
         questions: [
           {
             id: 'hf1', type: 'multiple',
-            text: 'What is this? It is a leaf.',
+            text: t('What is this? It is a leaf.', 'O que é isso? É uma folha.'),
             questionEmoji: '🥬',
             audio: 'lettuce',
             options: [
-              { id: 'a', label: 'Lettuce', correct: true },
-              { id: 'b', label: 'Cauliflower', correct: false },
-              { id: 'c', label: 'Radish', correct: false },
-              { id: 'd', label: 'Papaya', correct: false },
+              { id: 'a', label: t('Lettce', 'Alface'), correct: true }, // typo fixed: Letttuce -> Lettuce
+              { id: 'b', label: t('Cauliflower', 'Couve-flor'), correct: false },
+              { id: 'c', label: t('Radish', 'Rabanete'), correct: false },
+              { id: 'd', label: t('Papaya', 'Mamão'), correct: false },
             ]
           },
           {
             id: 'hf2', type: 'multiple',
-            text: 'What is this? It is a fruit.',
+            text: t('What is this? It is a fruit.', 'O que é isso? É uma fruta.'),
             questionEmoji: '🍈',
             audio: 'papaya',
             options: [
-              { id: 'a', label: 'Radish', correct: false },
-              { id: 'b', label: 'Lettuce', correct: false },
-              { id: 'c', label: 'Papaya', correct: true },
-              { id: 'd', label: 'Cauliflower', correct: false },
+              { id: 'a', label: t('Radish', 'Rabanete'), correct: false },
+              { id: 'b', label: t('Lettuce', 'Alface'), correct: false },
+              { id: 'c', label: t('Papaya', 'Mamão'), correct: true },
+              { id: 'd', label: t('Cauliflower', 'Couve-flor'), correct: false },
             ]
           },
           {
             id: 'hf3', type: 'multiple',
-            text: 'What is this? It is a flower.',
+            text: t('What is this? It is a flower.', 'O que é isso? É uma flor.'),
             questionEmoji: '🥦',
             audio: 'cauliflower',
             options: [
-              { id: 'a', label: 'Papaya', correct: false },
-              { id: 'b', label: 'Cauliflower', correct: true },
-              { id: 'c', label: 'Lettuce', correct: false },
-              { id: 'd', label: 'Radish', correct: false },
+              { id: 'a', label: t('Papaya', 'Mamão'), correct: false },
+              { id: 'b', label: t('Cauliflower', 'Couve-flor'), correct: true },
+              { id: 'c', label: t('Lettuce', 'Alface'), correct: false },
+              { id: 'd', label: t('Radish', 'Rabanete'), correct: false },
             ]
           },
           {
             id: 'hf4', type: 'multiple',
-            text: 'What is this? It is a root.',
+            text: t('What is this? It is a root.', 'O que é isso? É uma raiz.'),
             questionEmoji: '🌱',
             audio: 'radish',
             options: [
-              { id: 'a', label: 'Lettuce', correct: false },
-              { id: 'b', label: 'Cauliflower', correct: false },
-              { id: 'c', label: 'Papaya', correct: false },
-              { id: 'd', label: 'Radish', correct: true },
+              { id: 'a', label: t('Lettuce', 'Alface'), correct: false },
+              { id: 'b', label: t('Cauliflower', 'Couve-flor'), correct: false },
+              { id: 'c', label: t('Papaya', 'Mamão'), correct: false },
+              { id: 'd', label: t('Radish', 'Rabanete'), correct: true },
             ]
           },
           {
             id: 'hf5', type: 'multiple',
-            text: 'Lily eats healthy food. What PART of the plant is a radish?',
+            text: t('Lily eats healthy food. What PART of the plant is a radish?', 'Lily come comida saudável. Que PARTE da planta é um rabanete?'),
             questionEmoji: '🌿',
             audio: 'a root',
             options: [
-              { id: 'a', label: 'A leaf', correct: false },
-              { id: 'b', label: 'A fruit', correct: false },
-              { id: 'c', label: 'A root', correct: true },
-              { id: 'd', label: 'A flower', correct: false },
+              { id: 'a', label: t('A leaf', 'Uma folha'), correct: false },
+              { id: 'b', label: t('A fruit', 'Uma fruta'), correct: false },
+              { id: 'c', label: t('A root', 'Uma raiz'), correct: true },
+              { id: 'd', label: t('A flower', 'Uma flor'), correct: false },
             ]
           },
           {
             id: 'hf6', type: 'multiple',
-            text: 'What PART of the plant is lettuce?',
+            text: t('What PART of the plant is lettuce?', 'Que PARTE da planta é a alface?'),
             questionEmoji: '🥬',
             audio: 'a leaf',
             options: [
-              { id: 'a', label: 'A flower', correct: false },
-              { id: 'b', label: 'A trunk', correct: false },
-              { id: 'c', label: 'A fruit', correct: false },
-              { id: 'd', label: 'A leaf', correct: true },
+              { id: 'a', label: t('A flower', 'Uma flor'), correct: false },
+              { id: 'b', label: t('A trunk', 'Um tronco'), correct: false },
+              { id: 'c', label: t('A fruit', 'Uma fruta'), correct: false },
+              { id: 'd', label: t('A leaf', 'Uma folha'), correct: true },
             ]
           },
         ]
@@ -750,104 +753,104 @@
       // ── SECTION 3: Sports & Action Verbs ─────────────────────
       {
         id: 'sports-verbs',
-        title: 'Sports & Action Verbs',
-        desc: 'Words that indicate actions are called verbs!',
+        title: t('Sports & Action Verbs', 'Esportes e Verbos de Ação'),
+        desc: t('Words that indicate actions are called verbs!', 'Palavras que indicam ações são chamadas de verbos!'),
         emoji: '⚽',
         questions: [
           {
             id: 'sv1', type: 'multiple',
-            text: 'What sport is this? He practices every week.',
+            text: t('What sport is this? He practices every week.', 'Que esporte é esse? Ele pratica toda semana.'),
             questionEmoji: '🏊',
             audio: 'swimming',
             options: [
-              { id: 'a', label: 'Swimming', correct: true },
-              { id: 'b', label: 'Basketball', correct: false },
-              { id: 'c', label: 'Volleyball', correct: false },
-              { id: 'd', label: 'Running', correct: false },
+              { id: 'a', label: t('Swimming', 'Natação'), correct: true },
+              { id: 'b', label: t('Basketball', 'Basquete'), correct: false },
+              { id: 'c', label: t('Volleyball', 'Vôlei'), correct: false },
+              { id: 'd', label: t('Running', 'Corrida'), correct: false },
             ]
           },
           {
             id: 'sv2', type: 'multiple',
-            text: 'What sport is this? The girls are playing it at school.',
+            text: t('What sport is this? The girls are playing it at school.', 'Que esporte é esse? As meninas estão jogando na escola.'),
             questionEmoji: '🏐',
             audio: 'volleyball',
             options: [
-              { id: 'a', label: 'Soccer', correct: false },
-              { id: 'b', label: 'Swimming', correct: false },
-              { id: 'c', label: 'Volleyball', correct: true },
-              { id: 'd', label: 'Basketball', correct: false },
+              { id: 'a', label: t('Soccer', 'Futebol'), correct: false },
+              { id: 'b', label: t('Swimming', 'Natação'), correct: false },
+              { id: 'c', label: t('Volleyball', 'Vôlei'), correct: true },
+              { id: 'd', label: t('Basketball', 'Basquete'), correct: false },
             ]
           },
           {
             id: 'sv3', type: 'multiple',
-            text: 'What sport is this? They are dribbling an orange ball.',
+            text: t('What sport is this? They are dribbling an orange ball.', 'Que esporte é esse? Eles estão quicando uma bola laranja.'),
             questionEmoji: '🏀',
             audio: 'basketball',
             options: [
-              { id: 'a', label: 'Volleyball', correct: false },
-              { id: 'b', label: 'Basketball', correct: true },
-              { id: 'c', label: 'Soccer', correct: false },
-              { id: 'd', label: 'Running', correct: false },
+              { id: 'a', label: t('Volleyball', 'Vôlei'), correct: false },
+              { id: 'b', label: t('Basketball', 'Basquete'), correct: true },
+              { id: 'c', label: t('Soccer', 'Futebol'), correct: false },
+              { id: 'd', label: t('Running', 'Corrida'), correct: false },
             ]
           },
           {
             id: 'sv4', type: 'multiple',
-            text: 'What sport is this? The boy is playing with a round black-and-white ball.',
+            text: t('What sport is this? The boy is playing with a round black-and-white ball.', 'Que esporte é esse? O menino está jogando com uma bola redonda preta e branca.'),
             questionEmoji: '⚽',
             audio: 'soccer',
             options: [
-              { id: 'a', label: 'Basketball', correct: false },
-              { id: 'b', label: 'Swimming', correct: false },
-              { id: 'c', label: 'Volleyball', correct: false },
-              { id: 'd', label: 'Soccer', correct: true },
+              { id: 'a', label: t('Basketball', 'Basquete'), correct: false },
+              { id: 'b', label: t('Swimming', 'Natação'), correct: false },
+              { id: 'c', label: t('Volleyball', 'Vôlei'), correct: false },
+              { id: 'd', label: t('Soccer', 'Futebol'), correct: true },
             ]
           },
           {
             id: 'sv5', type: 'multiple',
-            text: '"She _____ the volleyball." Which verb is correct?',
+            text: t('"She _____ the volleyball." Which verb is correct?', '"Ela _____ a bola de vôlei." Qual verbo está correto?'),
             questionEmoji: '🏐',
             audio: 'she serves the volleyball',
             options: [
-              { id: 'a', label: 'bounces', correct: false },
-              { id: 'b', label: 'serves', correct: true },
-              { id: 'c', label: 'kicks', correct: false },
-              { id: 'd', label: 'swims', correct: false },
+              { id: 'a', label: t('bounces', 'quica'), correct: false },
+              { id: 'b', label: t('serves', 'saca'), correct: true },
+              { id: 'c', label: t('kicks', 'chuta'), correct: false },
+              { id: 'd', label: t('swims', 'nada'), correct: false },
             ]
           },
           {
             id: 'sv6', type: 'multiple',
-            text: '"She _____ the basketball." Which verb is correct?',
+            text: t('"She _____ the basketball." Which verb is correct?', '"Ela _____ a bola de basquete." Qual verbo está correto?'),
             questionEmoji: '🏀',
             audio: 'she bounces the basketball',
             options: [
-              { id: 'a', label: 'kicks', correct: false },
-              { id: 'b', label: 'serves', correct: false },
-              { id: 'c', label: 'bounces', correct: true },
-              { id: 'd', label: 'runs', correct: false },
+              { id: 'a', label: t('kicks', 'chuta'), correct: false },
+              { id: 'b', label: t('serves', 'saca'), correct: false },
+              { id: 'c', label: t('bounces', 'quica'), correct: true },
+              { id: 'd', label: t('runs', 'corre'), correct: false },
             ]
           },
           {
             id: 'sv7', type: 'multiple',
-            text: '"He _____ the soccer ball." Which verb is correct?',
+            text: t('"He _____ the soccer ball." Which verb is correct?', '"Ele _____ a bola de futebol." Qual verbo está correto?'),
             questionEmoji: '⚽',
             audio: 'he kicks the soccer ball',
             options: [
-              { id: 'a', label: 'swims', correct: false },
-              { id: 'b', label: 'bounces', correct: false },
-              { id: 'c', label: 'runs', correct: false },
-              { id: 'd', label: 'kicks', correct: true },
+              { id: 'a', label: t('swims', 'nada'), correct: false },
+              { id: 'b', label: t('bounces', 'quica'), correct: false },
+              { id: 'c', label: t('runs', 'corre'), correct: false },
+              { id: 'd', label: t('kicks', 'chuta'), correct: true },
             ]
           },
           {
             id: 'sv8', type: 'multiple',
-            text: '"She _____ in the pool." Which verb is correct?',
+            text: t('"She _____ in the pool." Which verb is correct?', '"Ela _____ na piscina." Qual verbo está correto?'),
             questionEmoji: '🏊',
             audio: 'she swims in the pool',
             options: [
-              { id: 'a', label: 'swims', correct: true },
-              { id: 'b', label: 'bounces', correct: false },
-              { id: 'c', label: 'serves', correct: false },
-              { id: 'd', label: 'kicks', correct: false },
+              { id: 'a', label: t('swims', 'nada'), correct: true },
+              { id: 'b', label: t('bounces', 'quica'), correct: false },
+              { id: 'c', label: t('serves', 'saca'), correct: false },
+              { id: 'd', label: t('kicks', 'chuta'), correct: false },
             ]
           },
         ]
@@ -856,82 +859,82 @@
       // ── SECTION 4: Numbers by Tens ───────────────────────────
       {
         id: 'numbers',
-        title: 'Numbers by Tens',
-        desc: 'In competitions, scores can be counted using tens and ones!',
+        title: t('Numbers by Tens', 'Números de Dez em Dez'),
+        desc: t('In competitions, scores can be counted using tens and ones!', 'Nas competições, as pontuações podem ser contadas usando dezenas e unidades!'),
         emoji: '🔢',
         questions: [
           {
             id: 'nb1', type: 'multiple',
-            text: 'How do we say number 10 in English?',
+            text: t('How do we say number 10 in English?', 'Como dizemos o número 10 em inglês?'),
             questionEmoji: '🔟',
             audio: 'ten',
             options: [
-              { id: 'a', label: 'Twenty', correct: false },
-              { id: 'b', label: 'Ten', correct: true },
-              { id: 'c', label: 'Thirty', correct: false },
-              { id: 'd', label: 'Forty', correct: false },
+              { id: 'a', label: t('Twenty', 'Vinte'), correct: false },
+              { id: 'b', label: t('Ten', 'Dez'), correct: true },
+              { id: 'c', label: t('Thirty', 'Trinta'), correct: false },
+              { id: 'd', label: t('Forty', 'Quarenta'), correct: false },
             ]
           },
           {
             id: 'nb2', type: 'multiple',
-            text: 'How do we say number 20 in English?',
+            text: t('How do we say number 20 in English?', 'Como dizemos o número 20 em inglês?'),
             questionEmoji: '2️⃣0️⃣',
             audio: 'twenty',
             options: [
-              { id: 'a', label: 'Ten', correct: false },
-              { id: 'b', label: 'Fifty', correct: false },
-              { id: 'c', label: 'Thirty', correct: false },
-              { id: 'd', label: 'Twenty', correct: true },
+              { id: 'a', label: t('Ten', 'Dez'), correct: false },
+              { id: 'b', label: t('Fifty', 'Cinquenta'), correct: false },
+              { id: 'c', label: t('Thirty', 'Trinta'), correct: false },
+              { id: 'd', label: t('Twenty', 'Vinte'), correct: true },
             ]
           },
           {
             id: 'nb3', type: 'multiple',
-            text: 'How do we say number 30 in English?',
+            text: t('How do we say number 30 in English?', 'Como dizemos o número 30 em inglês?'),
             questionEmoji: '3️⃣0️⃣',
             audio: 'thirty',
             options: [
-              { id: 'a', label: 'Forty', correct: false },
-              { id: 'b', label: 'Thirty', correct: true },
-              { id: 'c', label: 'Twenty', correct: false },
-              { id: 'd', label: 'Fifty', correct: false },
+              { id: 'a', label: t('Forty', 'Quarenta'), correct: false },
+              { id: 'b', label: t('Thirty', 'Trinta'), correct: true },
+              { id: 'c', label: t('Twenty', 'Vinte'), correct: false },
+              { id: 'd', label: t('Fifty', 'Cinquenta'), correct: false },
             ]
           },
           {
             id: 'nb4', type: 'multiple',
-            text: 'How do we say number 40 in English?',
+            text: t('How do we say number 40 in English?', 'Como dizemos o número 40 em inglês?'),
             questionEmoji: '4️⃣0️⃣',
             audio: 'forty',
             options: [
-              { id: 'a', label: 'Thirty', correct: false },
-              { id: 'b', label: 'Twenty', correct: false },
-              { id: 'c', label: 'Forty', correct: true },
-              { id: 'd', label: 'Ten', correct: false },
+              { id: 'a', label: t('Thirty', 'Trinta'), correct: false },
+              { id: 'b', label: t('Twenty', 'Vinte'), correct: false },
+              { id: 'c', label: t('Forty', 'Quarenta'), correct: true },
+              { id: 'd', label: t('Ten', 'Dez'), correct: false },
             ]
           },
           {
             id: 'nb5', type: 'multiple',
-            text: 'How do we say number 50 in English?',
+            text: t('How do we say number 50 in English?', 'Como dizemos o número 50 em inglês?'),
             questionEmoji: '5️⃣0️⃣',
             audio: 'fifty',
             options: [
-              { id: 'a', label: 'Sixty', correct: false },
-              { id: 'b', label: 'Forty', correct: false },
-              { id: 'c', label: 'Fifty', correct: true },
-              { id: 'd', label: 'Thirty', correct: false },
+              { id: 'a', label: t('Sixty', 'Sessenta'), correct: false },
+              { id: 'b', label: t('Forty', 'Quarenta'), correct: false },
+              { id: 'c', label: t('Fifty', 'Cinquenta'), correct: true },
+              { id: 'd', label: t('Thirty', 'Trinta'), correct: false },
             ]
           },
           {
             id: 'nb6', type: 'multiple',
-            text: 'The basketball team scored 44 points. How many TENS are there?',
+            text: t('The basketball team scored 44 points. How many TENS are there?', 'O time de basquete marcou 44 pontos. Quantas DEZENAS existem?'),
             questionEmoji: '🏀',
             audio: 'four tens',
-            hint: '44 = 4 tens + 4 ones',
+            hint: t('44 = 4 tens + 4 ones', '44 = 4 dezenas + 4 unidades'),
             hintEmoji: '💡',
             options: [
-              { id: 'a', label: '2 tens', correct: false },
-              { id: 'b', label: '3 tens', correct: false },
-              { id: 'c', label: '4 tens', correct: true },
-              { id: 'd', label: '5 tens', correct: false },
+              { id: 'a', label: t('2 tens', '2 dezenas'), correct: false },
+              { id: 'b', label: t('3 tens', '3 dezenas'), correct: false },
+              { id: 'c', label: t('4 tens', '4 dezenas'), correct: true },
+              { id: 'd', label: t('5 tens', '5 dezenas'), correct: false },
             ]
           },
         ]
@@ -966,12 +969,12 @@
       if (!q) return;
       const sec = SECTIONS[engine.currentSection];
       document.getElementById('sec-emoji').textContent = sec.emoji;
-      document.getElementById('sec-title').textContent = sec.title;
-      document.getElementById('sec-desc').textContent = sec.desc;
+      document.getElementById('sec-title').innerHTML = sec.title;
+      document.getElementById('sec-desc').innerHTML = sec.desc;
 
       const { done, total } = engine.sectionProgress();
       const pct = total > 0 ? Math.round(done / total * 100) : 0;
-      document.getElementById('prog-text').textContent = `Question ${done + 1} of ${total}`;
+      document.getElementById('prog-text').innerHTML = `${t('Question', 'Pergunta')} ${done + 1} ${t('of', 'de')} ${total}`;
       document.getElementById('prog-pct').textContent = pct + '%';
       document.getElementById('prog-fill').style.width = pct + '%';
 
@@ -986,14 +989,14 @@
       // label
       const lbl = document.createElement('div');
       lbl.className = 'q-label';
-      lbl.innerHTML = '<span>🐾 Question</span>';
-      if (isRepeat) lbl.innerHTML += '<span class="q-repeat-badge">🔁 Try again!</span>';
+      lbl.innerHTML = `<span>🐾 ${t('Question', 'Pergunta')}</span>`;
+      if (isRepeat) lbl.innerHTML += `<span class="q-repeat-badge">🔁 ${t('Try again!', 'Tente novamente!')}</span>`;
       card.appendChild(lbl);
 
       if (isRepeat) {
         const n = document.createElement('div');
         n.style.cssText = 'text-align:center;margin-bottom:8px;font-size:.85rem;color:#9a6700;font-weight:700;background:#fffbea;border-radius:8px;padding:5px 10px;';
-        n.textContent = '⚠️ We got this wrong — let\'s try again!';
+        n.innerHTML = `⚠️ ${t("We got this wrong — let's try again!", "Erramos essa — vamos tentar de novo!")}`;
         card.appendChild(n);
       }
 
@@ -1007,7 +1010,7 @@
         qt.appendChild(em);
       }
       const txt = document.createElement('span');
-      txt.textContent = q.text;
+      txt.innerHTML = q.text; // Use innerHTML for translation
       qt.appendChild(txt);
       if (q.audio) qt.appendChild(EduPlay.UI.playBtn(q.audio));
       card.appendChild(qt);
@@ -1027,12 +1030,12 @@
 
         const btnYes = document.createElement('button');
         btnYes.className = 'tf-btn';
-        btnYes.innerHTML = `<span>✅</span><span class="tf-label">YES</span>`;
+        btnYes.innerHTML = `<span>✅</span><span class="tf-label">${t('YES', 'SIM')}</span>`;
         btnYes.onclick = () => handleTFAnswer(btnYes, true, q.correctAnswer, tfGrid, q);
 
         const btnNo = document.createElement('button');
         btnNo.className = 'tf-btn';
-        btnNo.innerHTML = `<span>❌</span><span class="tf-label">NO</span>`;
+        btnNo.innerHTML = `<span>❌</span><span class="tf-label">${t('NO', 'NÃO')}</span>`;
         btnNo.onclick = () => handleTFAnswer(btnNo, false, q.correctAnswer, tfGrid, q);
 
         tfGrid.appendChild(btnYes);
@@ -1099,11 +1102,11 @@
       if (correct) {
         totalScore += 10;
         document.getElementById('score-display').textContent = totalScore;
-        EduPlay.UI.feedback(document.body, true, '✅ Correct!');
+        EduPlay.UI.feedback(document.body, true, `✅ ${t('Correct!', 'Correto!')}`);
         EduPlay.UI.confetti(document.body, 45);
         EduPlay.TTS.speak('Correct! Great job!', 'en-US');
       } else {
-        EduPlay.UI.feedback(document.body, false, '❌ Try again!');
+        EduPlay.UI.feedback(document.body, false, `❌ ${t('Try again!', 'Tente novamente!')}`);
         EduPlay.TTS.speak('Try again!', 'en-US');
       }
       engine.answer(q.id, correct);
@@ -1119,10 +1122,10 @@
       const secIdx = engine._pendingNext !== undefined ? engine._pendingNext - 1 : engine.currentSection;
       const sec = SECTIONS[secIdx] || SECTIONS[engine.currentSection];
       const next = SECTIONS[engine._pendingNext];
-      document.getElementById('reward-title').textContent = `🎉 "${sec.title}" complete!`;
-      document.getElementById('reward-desc').textContent = next
-        ? `Amazing, Sophia! Time for a mini-game! Up next: "${next.title}"!`
-        : 'Fantastic! Last mini-game!';
+      document.getElementById('reward-title').innerHTML = `🎉 "${sec.title}" ${t('complete!', 'concluída!')}`;
+      document.getElementById('reward-desc').innerHTML = next
+        ? `${t('Amazing, Sophia! Time for a mini-game! Up next:', 'Incrível, Sophia! Hora de um minijogo! A seguir:')} "${next.title}"!`
+        : t('Fantastic! Last mini-game!', 'Fantástico! Último minijogo!');
 
       const randomList = [...RewardGames.list].sort(() => Math.random() - .5);
       const selectedGameType = randomList[0];

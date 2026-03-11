@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPlay Game Tester</title>
+  <link rel="stylesheet" href="../lib/eduplay.css">
+  <link rel="stylesheet" href="../lib/themes.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #e8f4ff 0%, #d0eaff 100%);
+      font-family: 'Nunito', sans-serif;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(26, 111, 196, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Fredoka One', cursive;
+      color: #1a6fc4;
+      margin-bottom: 20px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .game-btn {
+      background: #f5faff;
+      border: 3px solid #cce0f5;
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.2rem;
+      color: #2d3561;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .game-btn:hover {
+      border-color: #1a6fc4;
+      background: #eef6ff;
+      transform: translateY(-3px);
+    }
+
+    #game-area {
+      margin-top: 20px;
+      min-height: 400px;
+      display: none;
+      background: #f8fbff;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      background: linear-gradient(135deg, #1a6fc4, #0d4a8a);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: none;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(26, 111, 196, 0.3);
+    }
+
+    #score-display {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+      color: #ffd700;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="menu-container">
+    <h1>🎮 EduPlay Tester</h1>
+    <p style="color: #8892b0; font-weight: bold;">Selecione um minijogo para testar!</p>
+    <div class="games-grid" id="games-grid">
+      <!-- Buttons will be injected here -->
+    </div>
+  </div>
+
+  <div class="container" id="play-container" style="display: none;">
+    <h2 id="current-game-title" style="font-family: 'Fredoka One', cursive; color: #1a6fc4;">Game</h2>
+    <div id="score-display">⭐ <span id="pts">0</span></div>
+    <div id="game-area" class="ep-game-container"></div>
+    <button class="back-btn" id="finish-btn" onclick="backToMenu()">Voltar ao Menu</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../lib/eduplay.js"></script>
+  <script src="../lib/reward-games.js"></script>
+  <script src="../lib/games/snake.js"></script>
+  <script src="../lib/games/tetris.js"></script>
+  <script src="../lib/games/tictactoe.js"></script>
+  <script src="../lib/games/builder.js"></script>
+  
+  <script>
+    let currentGameInstance = null;
+    let totalScore = 0;
+
+    // Build Menu
+    const grid = document.getElementById('games-grid');
+    RewardGames.list.forEach(gameId => {
+      const btn = document.createElement('button');
+      btn.className = 'game-btn';
+      btn.textContent = RewardGames.labels[gameId] || gameId;
+      btn.onclick = () => launchGame(gameId);
+      grid.appendChild(btn);
+    });
+
+    function launchGame(gameId) {
+      document.getElementById('menu-container').style.display = 'none';
+      document.getElementById('play-container').style.display = 'block';
+      document.getElementById('game-area').style.display = 'block';
+      document.getElementById('finish-btn').style.display = 'none';
+      
+      const title = RewardGames.labels[gameId] || gameId;
+      document.getElementById('current-game-title').textContent = title;
+      
+      totalScore = 0;
+      const scoreDisp = document.getElementById('score-display');
+      scoreDisp.style.display = 'block';
+      document.getElementById('pts').textContent = totalScore;
+      
+      const area = document.getElementById('game-area');
+      area.innerHTML = '';
+      
+      if (currentGameInstance) {
+        if (currentGameInstance.destroy) currentGameInstance.destroy();
+        currentGameInstance = null;
+      }
+
+      // Launch with 30s timer for testing
+      currentGameInstance = RewardGames[gameId](area, 30, (score) => {
+        totalScore += score || 0;
+        document.getElementById('pts').textContent = totalScore;
+        document.getElementById('finish-btn').style.display = 'inline-block';
+        EduPlay.UI.confetti(document.body, 40);
+      });
+    }
+
+    function backToMenu() {
+      if (currentGameInstance && currentGameInstance.destroy) {
+        currentGameInstance.destroy();
+      }
+      currentGameInstance = null;
+      document.getElementById('play-container').style.display = 'none';
+      document.getElementById('menu-container').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
