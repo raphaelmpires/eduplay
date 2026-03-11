@@ -477,8 +477,8 @@
       <img src="../../assets/homem%20aranha.png" alt="Spider-Man" style="width:44px;height:44px;object-fit:contain;">
     </div>
     <div class="topbar-info">
-      <div class="topbar-title">Charlie — Escola & Aventuras</div>
-      <div class="topbar-sub">Unit 1 · Chapters 1 & 2</div>
+      <div class="topbar-title" data-pt="Charlie — Escola & Aventuras">Charlie — School & Adventures</div>
+      <div class="topbar-sub" data-pt="Unidade 1 · Capítulos 1 & 2">Unit 1 · Chapters 1 & 2</div>
     </div>
     <div class="topbar-score">⭐ <span id="score-display">0</span></div>
   </div>
@@ -487,20 +487,15 @@
   <div id="screen-start" class="screen active">
     <div class="start-screen">
       <img src="../../assets/homem%20aranha.png" alt="Spider-Man" class="start-hero" style="width:150px;height:150px;object-fit:contain;">
-      <h1 class="start-title">Escola & Aventuras!</h1>
-      <p class="start-desc">Oi, Charlie! O Homem-Aranha precisa de você para completar a missão! Aprenda os materiais,
-        transportes, emoções e os 5 sentidos!</p>
+      <h1 class="start-title" data-pt="Escola & Aventuras!">School & Adventures!</h1>
+      <p class="start-desc" data-pt="Oi, Charlie! O Homem-Aranha precisa de você para completar a missão! Aprenda os materiais, transportes, emoções e os 5 sentidos!">Hi, Charlie! Spider-Man needs you to complete the mission! Learn about supplies, transportation, emotions, and the 5 senses!</p>
       <div class="sections-preview">
-        <div class="sec-item"><span style="font-size:1.5rem">✏️</span> Materiais Escolares <span class="si-count">8
-            perguntas</span></div>
-        <div class="sec-item"><span style="font-size:1.5rem">🚗</span> Meios de Transporte <span class="si-count">5
-            perguntas</span></div>
-        <div class="sec-item"><span style="font-size:1.5rem">😊</span> Emoções <span class="si-count">4 perguntas</span>
-        </div>
-        <div class="sec-item"><span style="font-size:1.5rem">👃</span> Os 5 Sentidos <span class="si-count">5
-            perguntas</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">✏️</span> <span data-pt="Materiais Escolares">School Supplies</span> <span class="si-count" data-pt="8 perguntas">8 questions</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">🚗</span> <span data-pt="Meios de Transporte">Transportation</span> <span class="si-count" data-pt="5 perguntas">5 questions</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">😊</span> <span data-pt="Emoções">Emotions</span> <span class="si-count" data-pt="4 perguntas">4 questions</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">👃</span> <span data-pt="Os 5 Sentidos">The 5 Senses</span> <span class="si-count" data-pt="5 perguntas">5 questions</span></div>
       </div>
-      <button class="start-btn" onclick="startGame()">🕸️ Começar a missão!</button>
+      <button class="start-btn" onclick="startGame()">🕸️ <span data-pt="Começar a missão!">Start Mission!</span></button>
     </div>
   </div>
 
@@ -508,11 +503,11 @@
   <div id="screen-quiz" class="screen">
     <div class="section-header">
       <span class="sec-emoji" id="sec-emoji">✏️</span>
-      <div class="sec-title" id="sec-title">Materiais Escolares</div>
-      <div class="sec-desc" id="sec-desc">Identifique os materiais!</div>
+      <div class="sec-title" id="sec-title" data-pt="Materiais Escolares">School Supplies</div>
+      <div class="sec-desc" id="sec-desc" data-pt="Identifique os materiais!">Identify the supplies!</div>
     </div>
     <div class="progress-wrap">
-      <div class="progress-label"><span id="prog-text">Pergunta 1 de 8</span><span id="prog-pct">0%</span></div>
+      <div class="progress-label"><span id="prog-text" data-pt="Pergunta 1 de 8">Question 1 of 8</span><span id="prog-pct">0%</span></div>
       <div class="ep-progress">
         <div class="ep-progress-fill" id="prog-fill" style="width:0%"></div>
       </div>
@@ -523,12 +518,12 @@
   <!-- REWARD -->
   <div id="screen-reward" class="screen">
     <div class="reward-screen">
-      <div class="reward-title" id="reward-title">🎉 Seção Completa!</div>
-      <div class="reward-desc" id="reward-desc">Arrasou! Hora de um mini-game!</div>
+      <div class="reward-title" id="reward-title" data-pt="🎉 Seção Completa!">🎉 Section Complete!</div>
+      <div class="reward-desc" id="reward-desc" data-pt="Arrasou! Hora de um mini-game!">Awesome! Time for a mini-game!</div>
       <div class="game-picker" id="game-picker"></div>
       <div class="game-instructions" id="game-instructions"></div>
       <div class="game-area ep-game-container" id="game-area"></div>
-      <button class="continue-btn" id="continue-btn" onclick="advanceSection()">Próxima Seção ▶</button>
+      <button class="continue-btn" id="continue-btn" onclick="advanceSection()"><span data-pt="Próxima Seção ▶">Next Section ▶</span></button>
     </div>
   </div>
 
@@ -543,21 +538,20 @@
         <line x1="100" y1="20" x2="20" y2="100" stroke="#800000" stroke-width="1.5" opacity="0.5" />
         <text x="60" y="75" text-anchor="middle" font-size="56" fill="#FFD700">🏆</text>
       </svg>
-      <h2 class="done-title">Missão cumprida, Charlie!</h2>
-      <p class="done-sub">Você completou a Unit 1! O Homem-Aranha ficaria orgulhoso! 🕸️</p>
+      <h2 class="done-title" data-pt="Missão cumprida, Charlie!">Mission accomplished, Charlie!</h2>
+      <p class="done-sub" data-pt="Você completou a Unit 1! O Homem-Aranha ficaria orgulhoso! 🕸️">You completed Unit 1! Spider-Man would be proud! 🕸️</p>
       <div class="done-stats">
-        <div class="stat-pill" id="stat-correct">0 <span>acertos</span></div>
-        <div class="stat-pill" id="stat-total">0 <span>tentativas</span></div>
-        <div class="stat-pill" id="stat-pct">0% <span>precisão</span></div>
+        <div class="stat-pill" id="stat-correct">0 <span data-pt="acertos">correct</span></div>
+        <div class="stat-pill" id="stat-total">0 <span data-pt="tentativas">attempts</span></div>
+        <div class="stat-pill" id="stat-pct">0% <span data-pt="precisão">accuracy</span></div>
       </div>
       <div class="ep-stars" id="done-stars" style="margin-bottom:28px;">
         <span class="ep-star">⭐</span><span class="ep-star">⭐</span><span class="ep-star">⭐</span>
       </div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <button class="start-btn" style="font-size:1.1rem;padding:13px 30px;" onclick="restartGame()">🔄 Jogar
-          Novamente</button>
+        <button class="start-btn" style="font-size:1.1rem;padding:13px 30px;" onclick="restartGame()">🔄 <span data-pt="Jogar Novamente">Play Again</span></button>
         <a href="../../index.html" class="start-btn"
-          style="font-size:1.1rem;padding:13px 30px;background:linear-gradient(135deg,#1565c0,#0d47a1);">🏠 Menu</a>
+          style="font-size:1.1rem;padding:13px 30px;background:linear-gradient(135deg,#1565c0,#0d47a1);">🏠 <span data-pt="Menu">Menu</span></a>
       </div>
     </div>
   </div>
@@ -569,43 +563,46 @@
   <script src="../../lib/games/tictactoe.js?v=3"></script>
   <script src="../../lib/games/builder.js?v=3"></script>
   <script>
+    EduPlay.Translation.init();
+    const t = EduPlay.Translation.t.bind(EduPlay.Translation);
+
     const SECTIONS = [
       {
         id: 'school-supplies', title: 'Materiais Escolares', desc: 'Qual é o nome desse material?', emoji: '✏️', questions: [
-          { id: 'ss1', type: 'multiple', text: 'O que é isso?', questionEmoji: '✏️', audio: 'pencil', options: [{ id: 'a', label: 'Pencil', emoji: '✏️', correct: true }, { id: 'b', label: 'Pen', emoji: '🖊️', correct: false }, { id: 'c', label: 'Eraser', emoji: '🧹', correct: false }, { id: 'd', label: 'Book', emoji: '📘', correct: false }] },
-          { id: 'ss2', type: 'multiple', text: 'Como se chama?', questionEmoji: '🖊️', audio: 'pen', options: [{ id: 'a', label: 'Pencil', emoji: '✏️', correct: false }, { id: 'b', label: 'Pen', emoji: '🖊️', correct: true }, { id: 'c', label: 'Notebook', emoji: '📓', correct: false }, { id: 'd', label: 'Eraser', emoji: '🧹', correct: false }] },
-          { id: 'ss3', type: 'multiple', text: 'O que é isso?', questionEmoji: '🧹', audio: 'eraser', options: [{ id: 'a', label: 'Pencil Sharpener', emoji: '🔧', correct: false }, { id: 'b', label: 'Book', emoji: '📘', correct: false }, { id: 'c', label: 'Eraser', emoji: '🧹', correct: true }, { id: 'd', label: 'Pen', emoji: '🖊️', correct: false }] },
-          { id: 'ss4', type: 'multiple', text: 'Como se chama?', questionEmoji: '🔧', audio: 'pencil sharpener', options: [{ id: 'a', label: 'Pencil Sharpener', emoji: '🔧', correct: true }, { id: 'b', label: 'Colored Pencil', emoji: '🖍️', correct: false }, { id: 'c', label: 'Eraser', emoji: '🧹', correct: false }, { id: 'd', label: 'School Bag', emoji: '🎒', correct: false }] },
-          { id: 'ss5', type: 'multiple', text: 'O que é isso?', questionEmoji: '🖍️', audio: 'colored pencil', options: [{ id: 'a', label: 'Pen', emoji: '🖊️', correct: false }, { id: 'b', label: 'Colored Pencil', emoji: '🖍️', correct: true }, { id: 'c', label: 'Pencil', emoji: '✏️', correct: false }, { id: 'd', label: 'Notebook', emoji: '📓', correct: false }] },
-          { id: 'ss6', type: 'multiple', text: 'O que é isso?', questionEmoji: '📘', audio: 'book', options: [{ id: 'a', label: 'Notebook', emoji: '📓', correct: false }, { id: 'b', label: 'School Bag', emoji: '🎒', correct: false }, { id: 'c', label: 'Book', emoji: '📘', correct: true }, { id: 'd', label: 'Eraser', emoji: '🧹', correct: false }] },
-          { id: 'ss7', type: 'multiple', text: 'O que é isso?', questionEmoji: '📓', audio: 'notebook', options: [{ id: 'a', label: 'Book', emoji: '📘', correct: false }, { id: 'b', label: 'Notebook', emoji: '📓', correct: true }, { id: 'c', label: 'Pen', emoji: '🖊️', correct: false }, { id: 'd', label: 'Colored Pencil', emoji: '🖍️', correct: false }] },
-          { id: 'ss8', type: 'multiple', text: 'O que é isso?', questionEmoji: '🎒', audio: 'school bag', options: [{ id: 'a', label: 'Book', emoji: '📘', correct: false }, { id: 'b', label: 'Notebook', emoji: '📓', correct: false }, { id: 'c', label: 'Pencil Sharpener', emoji: '🔧', correct: false }, { id: 'd', label: 'School Bag', emoji: '🎒', correct: true }] },
+          { id: 'ss1', type: 'multiple', text: 'O que é isso?', questionEmoji: '✏️', audio: 'pencil', options: [{ id: 'a', label: t('Pencil', 'Lápis'), emoji: '✏️', correct: true }, { id: 'b', label: t('Pen', 'Caneta'), emoji: '🖊️', correct: false }, { id: 'c', label: t('Eraser', 'Borracha'), emoji: '🧹', correct: false }, { id: 'd', label: t('Book', 'Livro'), emoji: '📘', correct: false }] },
+          { id: 'ss2', type: 'multiple', text: 'Como se chama?', questionEmoji: '🖊️', audio: 'pen', options: [{ id: 'a', label: t('Pencil', 'Lápis'), emoji: '✏️', correct: false }, { id: 'b', label: t('Pen', 'Caneta'), emoji: '🖊️', correct: true }, { id: 'c', label: t('Notebook', 'Caderno'), emoji: '📓', correct: false }, { id: 'd', label: t('Eraser', 'Borracha'), emoji: '🧹', correct: false }] },
+          { id: 'ss3', type: 'multiple', text: 'O que é isso?', questionEmoji: '🧹', audio: 'eraser', options: [{ id: 'a', label: t('Pencil Sharpener', 'Apontador'), emoji: '🔧', correct: false }, { id: 'b', label: t('Book', 'Livro'), emoji: '📘', correct: false }, { id: 'c', label: t('Eraser', 'Borracha'), emoji: '🧹', correct: true }, { id: 'd', label: t('Pen', 'Caneta'), emoji: '🖊️', correct: false }] },
+          { id: 'ss4', type: 'multiple', text: 'Como se chama?', questionEmoji: '🔧', audio: 'pencil sharpener', options: [{ id: 'a', label: t('Pencil Sharpener', 'Apontador'), emoji: '🔧', correct: true }, { id: 'b', label: t('Colored Pencil', 'Lápis de Cor'), emoji: '🖍️', correct: false }, { id: 'c', label: t('Eraser', 'Borracha'), emoji: '🧹', correct: false }, { id: 'd', label: t('School Bag', 'Mochila'), emoji: '🎒', correct: false }] },
+          { id: 'ss5', type: 'multiple', text: 'O que é isso?', questionEmoji: '🖍️', audio: 'colored pencil', options: [{ id: 'a', label: t('Pen', 'Caneta'), emoji: '🖊️', correct: false }, { id: 'b', label: t('Colored Pencil', 'Lápis de Cor'), emoji: '🖍️', correct: true }, { id: 'c', label: t('Pencil', 'Lápis'), emoji: '✏️', correct: false }, { id: 'd', label: t('Notebook', 'Caderno'), emoji: '📓', correct: false }] },
+          { id: 'ss6', type: 'multiple', text: 'O que é isso?', questionEmoji: '📘', audio: 'book', options: [{ id: 'a', label: t('Notebook', 'Caderno'), emoji: '📓', correct: false }, { id: 'b', label: t('School Bag', 'Mochila'), emoji: '🎒', correct: false }, { id: 'c', label: t('Book', 'Livro'), emoji: '📘', correct: true }, { id: 'd', label: t('Eraser', 'Borracha'), emoji: '🧹', correct: false }] },
+          { id: 'ss7', type: 'multiple', text: 'O que é isso?', questionEmoji: '📓', audio: 'notebook', options: [{ id: 'a', label: t('Book', 'Livro'), emoji: '📘', correct: false }, { id: 'b', label: t('Notebook', 'Caderno'), emoji: '📓', correct: true }, { id: 'c', label: t('Pen', 'Caneta'), emoji: '🖊️', correct: false }, { id: 'd', label: t('Colored Pencil', 'Lápis de Cor'), emoji: '🖍️', correct: false }] },
+          { id: 'ss8', type: 'multiple', text: 'O que é isso?', questionEmoji: '🎒', audio: 'school bag', options: [{ id: 'a', label: t('Book', 'Livro'), emoji: '📘', correct: false }, { id: 'b', label: t('Notebook', 'Caderno'), emoji: '📓', correct: false }, { id: 'c', label: t('Pencil Sharpener', 'Apontador'), emoji: '🔧', correct: false }, { id: 'd', label: t('School Bag', 'Mochila'), emoji: '🎒', correct: true }] },
         ]
       },
       {
         id: 'transport', title: 'Meios de Transporte', desc: 'Como as pessoas chegam na escola?', emoji: '🚗', questions: [
-          { id: 'tr1', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚲', audio: 'bike', options: [{ id: 'a', label: 'Bike', emoji: '🚲', correct: true }, { id: 'b', label: 'Car', emoji: '🚗', correct: false }, { id: 'c', label: 'Van', emoji: '🚐', correct: false }, { id: 'd', label: 'Motorbike', emoji: '🛵', correct: false }] },
-          { id: 'tr2', type: 'multiple', text: 'O que é isso?', questionEmoji: '🛵', audio: 'motorbike', options: [{ id: 'a', label: 'Bike', emoji: '🚲', correct: false }, { id: 'b', label: 'Motorbike', emoji: '🛵', correct: true }, { id: 'c', label: 'Car', emoji: '🚗', correct: false }, { id: 'd', label: 'Van', emoji: '🚐', correct: false }] },
-          { id: 'tr3', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚗', audio: 'car', options: [{ id: 'a', label: 'Van', emoji: '🚐', correct: false }, { id: 'b', label: 'Motorbike', emoji: '🛵', correct: false }, { id: 'c', label: 'Car', emoji: '🚗', correct: true }, { id: 'd', label: 'Bike', emoji: '🚲', correct: false }] },
-          { id: 'tr4', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚐', audio: 'van', options: [{ id: 'a', label: 'Car', emoji: '🚗', correct: false }, { id: 'b', label: 'Van', emoji: '🚐', correct: true }, { id: 'c', label: 'Bike', emoji: '🚲', correct: false }, { id: 'd', label: 'Motorbike', emoji: '🛵', correct: false }] },
-          { id: 'tr5', type: 'multiple', text: 'Ben vai à escola como?', questionEmoji: '🚗', audio: 'I go to school by car', hint: '"I go to school by car." — Como Ben vai à escola?', hintAudio: 'I go to school by car', options: [{ id: 'a', label: 'On Foot', emoji: '🚶', correct: false }, { id: 'b', label: 'By Bike', emoji: '🚲', correct: false }, { id: 'c', label: 'By Car', emoji: '🚗', correct: true }, { id: 'd', label: 'By Van', emoji: '🚐', correct: false }] },
+          { id: 'tr1', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚲', audio: 'bike', options: [{ id: 'a', label: t('Bike', 'Bicicleta'), emoji: '🚲', correct: true }, { id: 'b', label: t('Car', 'Carro'), emoji: '🚗', correct: false }, { id: 'c', label: t('Van', 'Van'), emoji: '🚐', correct: false }, { id: 'd', label: t('Motorbike', 'Moto'), emoji: '🛵', correct: false }] },
+          { id: 'tr2', type: 'multiple', text: 'O que é isso?', questionEmoji: '🛵', audio: 'motorbike', options: [{ id: 'a', label: t('Bike', 'Bicicleta'), emoji: '🚲', correct: false }, { id: 'b', label: t('Motorbike', 'Moto'), emoji: '🛵', correct: true }, { id: 'c', label: t('Car', 'Carro'), emoji: '🚗', correct: false }, { id: 'd', label: t('Van', 'Van'), emoji: '🚐', correct: false }] },
+          { id: 'tr3', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚗', audio: 'car', options: [{ id: 'a', label: t('Van', 'Van'), emoji: '🚐', correct: false }, { id: 'b', label: t('Motorbike', 'Moto'), emoji: '🛵', correct: false }, { id: 'c', label: t('Car', 'Carro'), emoji: '🚗', correct: true }, { id: 'd', label: t('Bike', 'Bicicleta'), emoji: '🚲', correct: false }] },
+          { id: 'tr4', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚐', audio: 'van', options: [{ id: 'a', label: t('Car', 'Carro'), emoji: '🚗', correct: false }, { id: 'b', label: t('Van', 'Van'), emoji: '🚐', correct: true }, { id: 'c', label: t('Bike', 'Bicicleta'), emoji: '🚲', correct: false }, { id: 'd', label: t('Motorbike', 'Moto'), emoji: '🛵', correct: false }] },
+          { id: 'tr5', type: 'multiple', text: 'Ben vai à escola como?', questionEmoji: '🚗', audio: 'I go to school by car', hint: '"I go to school by car." — Como Ben vai à escola?', hintAudio: 'I go to school by car', options: [{ id: 'a', label: t('On Foot', 'A pé'), emoji: '🚶', correct: false }, { id: 'b', label: t('By Bike', 'De Bicicleta'), emoji: '🚲', correct: false }, { id: 'c', label: t('By Car', 'De Carro'), emoji: '🚗', correct: true }, { id: 'd', label: t('By Van', 'De Van'), emoji: '🚐', correct: false }] },
         ]
       },
       {
         id: 'emotions', title: 'Emoções', desc: 'Como você está se sentindo?', emoji: '😊', questions: [
-          { id: 'em1', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😢', audio: 'they are sad', options: [{ id: 'a', label: 'They are happy', emoji: '😄', correct: false }, { id: 'b', label: 'They are sad', emoji: '😢', correct: true }, { id: 'c', label: 'They are angry', emoji: '😠', correct: false }, { id: 'd', label: 'They are afraid', emoji: '😨', correct: false }] },
-          { id: 'em2', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😠', audio: 'they are angry', options: [{ id: 'a', label: 'They are afraid', emoji: '😨', correct: false }, { id: 'b', label: 'They are sad', emoji: '😢', correct: false }, { id: 'c', label: 'They are angry', emoji: '😠', correct: true }, { id: 'd', label: 'They are happy', emoji: '😄', correct: false }] },
-          { id: 'em3', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😨', audio: 'they are afraid', options: [{ id: 'a', label: 'They are happy', emoji: '😄', correct: false }, { id: 'b', label: 'They are angry', emoji: '😠', correct: false }, { id: 'c', label: 'They are sad', emoji: '😢', correct: false }, { id: 'd', label: 'They are afraid', emoji: '😨', correct: true }] },
-          { id: 'em4', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😄', audio: 'they are happy', options: [{ id: 'a', label: 'They are happy', emoji: '😄', correct: true }, { id: 'b', label: 'They are sad', emoji: '😢', correct: false }, { id: 'c', label: 'They are angry', emoji: '😠', correct: false }, { id: 'd', label: 'They are afraid', emoji: '😨', correct: false }] },
+          { id: 'em1', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😢', audio: 'they are sad', options: [{ id: 'a', label: t('They are happy', 'Eles estão felizes'), emoji: '😄', correct: false }, { id: 'b', label: t('They are sad', 'Eles estão tristes'), emoji: '😢', correct: true }, { id: 'c', label: t('They are angry', 'Eles estão bravos'), emoji: '😠', correct: false }, { id: 'd', label: t('They are afraid', 'Eles estão com medo'), emoji: '😨', correct: false }] },
+          { id: 'em2', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😠', audio: 'they are angry', options: [{ id: 'a', label: t('They are afraid', 'Eles estão com medo'), emoji: '😨', correct: false }, { id: 'b', label: t('They are sad', 'Eles estão tristes'), emoji: '😢', correct: false }, { id: 'c', label: t('They are angry', 'Eles estão bravos'), emoji: '😠', correct: true }, { id: 'd', label: t('They are happy', 'Eles estão felizes'), emoji: '😄', correct: false }] },
+          { id: 'em3', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😨', audio: 'they are afraid', options: [{ id: 'a', label: t('They are happy', 'Eles estão felizes'), emoji: '😄', correct: false }, { id: 'b', label: t('They are angry', 'Eles estão bravos'), emoji: '😠', correct: false }, { id: 'c', label: t('They are sad', 'Eles estão tristes'), emoji: '😢', correct: false }, { id: 'd', label: t('They are afraid', 'Eles estão com medo'), emoji: '😨', correct: true }] },
+          { id: 'em4', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😄', audio: 'they are happy', options: [{ id: 'a', label: t('They are happy', 'Eles estão felizes'), emoji: '😄', correct: true }, { id: 'b', label: t('They are sad', 'Eles estão tristes'), emoji: '😢', correct: false }, { id: 'c', label: t('They are angry', 'Eles estão bravos'), emoji: '😠', correct: false }, { id: 'd', label: t('They are afraid', 'Eles estão com medo'), emoji: '😨', correct: false }] },
         ]
       },
       {
         id: 'senses', title: 'Os 5 Sentidos', desc: 'Qual sentido usamos?', emoji: '👃', questions: [
-          { id: 'se1', type: 'multiple', text: 'Qual sentido usamos para cheirar?', questionEmoji: '👃', audio: 'smell', options: [{ id: 'a', label: 'Sight', emoji: '👁️', correct: false }, { id: 'b', label: 'Smell', emoji: '👃', correct: true }, { id: 'c', label: 'Touch', emoji: '✋', correct: false }, { id: 'd', label: 'Taste', emoji: '👅', correct: false }] },
-          { id: 'se2', type: 'multiple', text: 'Qual sentido usamos para ouvir?', questionEmoji: '👂', audio: 'hearing', options: [{ id: 'a', label: 'Taste', emoji: '👅', correct: false }, { id: 'b', label: 'Sight', emoji: '👁️', correct: false }, { id: 'c', label: 'Hearing', emoji: '👂', correct: true }, { id: 'd', label: 'Touch', emoji: '✋', correct: false }] },
-          { id: 'se3', type: 'multiple', text: 'Qual sentido usamos para ver?', questionEmoji: '👁️', audio: 'sight', options: [{ id: 'a', label: 'Sight', emoji: '👁️', correct: true }, { id: 'b', label: 'Smell', emoji: '👃', correct: false }, { id: 'c', label: 'Hearing', emoji: '👂', correct: false }, { id: 'd', label: 'Taste', emoji: '👅', correct: false }] },
-          { id: 'se4', type: 'multiple', text: 'Qual sentido usamos para provar?', questionEmoji: '👅', audio: 'taste', options: [{ id: 'a', label: 'Touch', emoji: '✋', correct: false }, { id: 'b', label: 'Smell', emoji: '👃', correct: false }, { id: 'c', label: 'Sight', emoji: '👁️', correct: false }, { id: 'd', label: 'Taste', emoji: '👅', correct: true }] },
-          { id: 'se5', type: 'multiple', text: 'Qual sentido usamos para tocar?', questionEmoji: '✋', audio: 'touch', options: [{ id: 'a', label: 'Touch', emoji: '✋', correct: true }, { id: 'b', label: 'Smell', emoji: '👃', correct: false }, { id: 'c', label: 'Hearing', emoji: '👂', correct: false }, { id: 'd', label: 'Sight', emoji: '👁️', correct: false }] },
+          { id: 'se1', type: 'multiple', text: 'Qual sentido usamos para cheirar?', questionEmoji: '👃', audio: 'smell', options: [{ id: 'a', label: t('Sight', 'Visão'), emoji: '👁️', correct: false }, { id: 'b', label: t('Smell', 'Olfato'), emoji: '👃', correct: true }, { id: 'c', label: t('Touch', 'Tato'), emoji: '✋', correct: false }, { id: 'd', label: t('Taste', 'Paladar'), emoji: '👅', correct: false }] },
+          { id: 'se2', type: 'multiple', text: 'Qual sentido usamos para ouvir?', questionEmoji: '👂', audio: 'hearing', options: [{ id: 'a', label: t('Taste', 'Paladar'), emoji: '👅', correct: false }, { id: 'b', label: t('Sight', 'Visão'), emoji: '👁️', correct: false }, { id: 'c', label: t('Hearing', 'Audição'), emoji: '👂', correct: true }, { id: 'd', label: t('Touch', 'Tato'), emoji: '✋', correct: false }] },
+          { id: 'se3', type: 'multiple', text: 'Qual sentido usamos para ver?', questionEmoji: '👁️', audio: 'sight', options: [{ id: 'a', label: t('Sight', 'Visão'), emoji: '👁️', correct: true }, { id: 'b', label: t('Smell', 'Olfato'), emoji: '👃', correct: false }, { id: 'c', label: t('Hearing', 'Audição'), emoji: '👂', correct: false }, { id: 'd', label: t('Taste', 'Paladar'), emoji: '👅', correct: false }] },
+          { id: 'se4', type: 'multiple', text: 'Qual sentido usamos para provar?', questionEmoji: '👅', audio: 'taste', options: [{ id: 'a', label: t('Touch', 'Tato'), emoji: '✋', correct: false }, { id: 'b', label: t('Smell', 'Olfato'), emoji: '👃', correct: false }, { id: 'c', label: t('Sight', 'Visão'), emoji: '👁️', correct: false }, { id: 'd', label: t('Taste', 'Paladar'), emoji: '👅', correct: true }] },
+          { id: 'se5', type: 'multiple', text: 'Qual sentido usamos para tocar?', questionEmoji: '✋', audio: 'touch', options: [{ id: 'a', label: t('Touch', 'Tato'), emoji: '✋', correct: true }, { id: 'b', label: t('Smell', 'Olfato'), emoji: '👃', correct: false }, { id: 'c', label: t('Hearing', 'Audição'), emoji: '👂', correct: false }, { id: 'd', label: t('Sight', 'Visão'), emoji: '👁️', correct: false }] },
         ]
       },
     ];
@@ -629,7 +626,9 @@
       document.getElementById('sec-desc').textContent = sec.desc;
       const { done, total } = engine.sectionProgress();
       const pct = total > 0 ? Math.round(done / total * 100) : 0;
-      document.getElementById('prog-text').textContent = `Pergunta ${done + 1} de ${total}`;
+      const textPergunta = t('Question', 'Pergunta');
+      const textDe = t('of', 'de');
+      document.getElementById('prog-text').innerHTML = `${textPergunta} ${done + 1} ${textDe} ${total}`;
       document.getElementById('prog-pct').textContent = pct + '%';
       document.getElementById('prog-fill').style.width = pct + '%';
 
@@ -639,11 +638,11 @@
       const card = document.createElement('div'); card.className = 'q-card';
 
       const lbl = document.createElement('div'); lbl.className = 'q-label';
-      lbl.innerHTML = '<span>🕸️ Pergunta</span>';
-      if (isRepeat) lbl.innerHTML += '<span class="q-repeat-badge">🔁 Repetição</span>';
+      lbl.innerHTML = `<span>🕸️ ${t('Question', 'Pergunta')}</span>`;
+      if (isRepeat) lbl.innerHTML += `<span class="q-repeat-badge">🔁 ${t('Repeat', 'Repetição')}</span>`;
       card.appendChild(lbl);
 
-      if (isRepeat) { const n = document.createElement('div'); n.style.cssText = 'text-align:center;margin-bottom:8px;font-size:.85rem;color:#9a6700;font-weight:700;background:#fffbea;border-radius:8px;padding:5px 10px;'; n.textContent = '⚠️ Erramos essa — tenta de novo!'; card.appendChild(n); }
+      if (isRepeat) { const n = document.createElement('div'); n.style.cssText = 'text-align:center;margin-bottom:8px;font-size:.85rem;color:#9a6700;font-weight:700;background:#fffbea;border-radius:8px;padding:5px 10px;'; n.innerHTML = `⚠️ ${t('We missed this one — try again!', 'Erramos essa — tenta de novo!')}`; card.appendChild(n); }
 
       const qt = document.createElement('div'); qt.className = 'q-text';
       if (q.questionEmoji) { const em = document.createElement('span'); em.style.fontSize = '2.2rem'; em.textContent = q.questionEmoji; qt.appendChild(em); }
@@ -672,13 +671,13 @@
       if (correct) {
         btn.classList.add('correct');
         totalScore += 10; document.getElementById('score-display').textContent = totalScore;
-        EduPlay.UI.feedback(document.body, true, '✅ Correto!');
+        EduPlay.UI.feedback(document.body, true, `✅ ${t('Correct!', 'Correto!')}`);
         EduPlay.UI.confetti(document.body, 45);
         EduPlay.TTS.speak('Correct! Great job!', 'en-US');
       } else {
         btn.classList.add('wrong');
         grid.querySelectorAll('.option-btn').forEach(b => { const lbl = b.querySelector('span:nth-child(2)')?.textContent; if (q.options.find(o => o.label === lbl)?.correct) b.classList.add('correct'); });
-        EduPlay.UI.feedback(document.body, false, '❌ Tente de novo!');
+        EduPlay.UI.feedback(document.body, false, `❌ ${t('Try again!', 'Tente de novo!')}`);
         EduPlay.TTS.speak('Try again!', 'en-US');
       }
       engine.answer(q.id, correct);
@@ -690,8 +689,10 @@
       const secIdx = engine._pendingNext !== undefined ? engine._pendingNext - 1 : engine.currentSection;
       const sec = SECTIONS[secIdx] || SECTIONS[engine.currentSection];
       const next = SECTIONS[engine._pendingNext];
-      document.getElementById('reward-title').textContent = `🎉 "${sec.title}" completo!`;
-      document.getElementById('reward-desc').textContent = next ? `Arrasou! Hora de um mini-game! Depois: "${next.title}"!` : 'Incrível! Último mini-game!';
+      document.getElementById('reward-title').innerHTML = `🎉 "${sec.title}" ${t('complete!', 'completo!')}`;
+      document.getElementById('reward-desc').innerHTML = next 
+        ? `${t('Awesome! Time for a mini-game! Up next:', 'Arrasou! Hora de um mini-game! Depois:')} "${next.title}"!` 
+        : t('Incredible! Last mini-game!', 'Incrível! Último mini-game!');
       // Sorteia um jogo aleatório a cada recompensa
       const randomList = [...RewardGames.list].sort(() => Math.random() - .5);
       selectedGameType = randomList[0];
