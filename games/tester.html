@@ -96,6 +96,10 @@
   <div class="container" id="menu-container">
     <h1>🎮 EduPlay Tester</h1>
     <p style="color: #8892b0; font-weight: bold;">Selecione um minijogo para testar!</p>
+    <div style="margin: 20px 0;">
+      <label for="timeLimit" style="color: #2d3561; font-weight: bold;">Tempo por jogo (segundos):</label>
+      <input type="number" id="timeLimit" value="60" min="10" max="300" style="padding: 8px; border-radius: 8px; border: 2px solid #cce0f5; width: 80px; font-family: 'Nunito', sans-serif; font-weight: bold; color: #1a6fc4;">
+    </div>
     <div class="games-grid" id="games-grid">
       <!-- Buttons will be injected here -->
     </div>
@@ -119,6 +123,15 @@
   <script>
     let currentGameInstance = null;
     let totalScore = 0;
+
+    // Timer Config
+    const timeInput = document.getElementById('timeLimit');
+    timeInput.value = localStorage.getItem('eduplay_tester_time') || '60';
+    timeInput.addEventListener('change', () => {
+      const val = Math.max(10, parseInt(timeInput.value, 10) || 60);
+      timeInput.value = val;
+      localStorage.setItem('eduplay_tester_time', val);
+    });
 
     // Build Menu
     const grid = document.getElementById('games-grid');
@@ -152,8 +165,9 @@
         currentGameInstance = null;
       }
 
-      // Launch with 30s timer for testing
-      currentGameInstance = RewardGames[gameId](area, 30, (score) => {
+      // Launch with user-defined timer
+      const timeSecs = parseInt(timeInput.value, 10) || 60;
+      currentGameInstance = RewardGames[gameId](area, timeSecs, (score) => {
         totalScore += score || 0;
         document.getElementById('pts').textContent = totalScore;
         document.getElementById('finish-btn').style.display = 'inline-block';
