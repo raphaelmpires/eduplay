@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🕷️ Charlie – Escola & Aventuras</title>
+  <link rel="stylesheet" href="../../lib/eduplay.css">
+  <link rel="stylesheet" href="../../lib/themes.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #fff5f5 0%, #ffeaea 100%);
+    }
+
+    /* TOP BAR */
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #d32f2f, #8B0000);
+      box-shadow: 0 3px 16px rgba(139, 0, 0, .35);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-back {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: none;
+      background: rgba(255, 255, 255, .18);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+      text-decoration: none;
+    }
+
+    .topbar-back:hover {
+      background: rgba(255, 255, 255, .3);
+    }
+
+    .topbar-avatar {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .topbar-info {
+      flex: 1;
+    }
+
+    .topbar-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.15rem;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .topbar-sub {
+      font-size: .77rem;
+      color: rgba(255, 255, 255, .75);
+      font-weight: 600;
+    }
+
+    .topbar-score {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.15rem;
+      color: #fff;
+      background: rgba(255, 255, 255, .2);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* SECTION HEADER */
+    .section-header {
+      text-align: center;
+      padding: 28px 20px 14px;
+    }
+
+    .sec-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .sec-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+      color: #d32f2f;
+    }
+
+    .sec-desc {
+      color: #8892b0;
+      font-weight: 600;
+      margin-top: 4px;
+      font-size: .95rem;
+    }
+
+    /* PROGRESS */
+    .progress-wrap {
+      max-width: 580px;
+      margin: 0 auto 20px;
+      padding: 0 20px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .83rem;
+      font-weight: 700;
+      color: #8892b0;
+      margin-bottom: 6px;
+    }
+
+    .ep-progress-fill {
+      background: linear-gradient(90deg, #d32f2f, #ff7043) !important;
+    }
+
+    /* QUESTION CARD */
+    .question-area {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .q-card {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 6px 28px rgba(211, 47, 47, .1);
+      padding: 24px 24px 18px;
+      margin-bottom: 18px;
+      border-top: 4px solid #d32f2f;
+      animation: q-slide-in .3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    @keyframes q-slide-in {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(.97)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+      }
+    }
+
+    .q-label {
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #d32f2f;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .q-repeat-badge {
+      background: #fff3cd;
+      color: #9a6700;
+      font-size: .74rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      border: 1px solid #ffc107;
+    }
+
+    .q-text {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.2rem, 4vw, 1.7rem);
+      color: #2d3561;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hint-box {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fff5f5;
+      border-radius: 12px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #d32f2f;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 3px solid #d32f2f;
+    }
+
+    /* OPTIONS */
+    .options-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .options-grid.cols-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      border-radius: 14px;
+      border: 2.5px solid #ffe0e0;
+      background: #fff9f9;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2d3561;
+      cursor: pointer;
+      text-align: left;
+      transition: all .18s;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: #d32f2f;
+      background: #fff5f5;
+      transform: translateX(4px);
+    }
+
+    .option-btn .opt-emoji {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .option-btn.correct {
+      border-color: #43c97e !important;
+      background: #e8faf0 !important;
+      color: #1a7a47;
+    }
+
+    .option-btn.wrong {
+      border-color: #ff5c6a !important;
+      background: #fff0f2 !important;
+      color: #c0392b;
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    /* SCREENS */
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    /* START */
+    .start-screen {
+      text-align: center;
+      padding: 40px 24px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .start-hero {
+      display: block;
+      margin: 0 auto 16px;
+      filter: drop-shadow(0 8px 20px rgba(211, 47, 47, .4));
+      animation: ep-float 3s ease-in-out infinite;
+    }
+
+    .start-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.2rem;
+      color: #d32f2f;
+      margin-bottom: 6px;
+    }
+
+    .start-desc {
+      color: #8892b0;
+      font-weight: 600;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .sections-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .sec-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(211, 47, 47, .07);
+      font-weight: 700;
+      color: #2d3561;
+      border-left: 4px solid #d32f2f;
+    }
+
+    .sec-item .si-count {
+      margin-left: auto;
+      font-size: .83rem;
+      color: #8892b0;
+      background: #fff5f5;
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+
+    .start-btn {
+      background: linear-gradient(135deg, #d32f2f, #8B0000);
+      color: #fff;
+      border: none;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      padding: 16px 44px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(211, 47, 47, .35);
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .start-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(211, 47, 47, .4);
+    }
+
+    /* REWARD */
+    .reward-screen {
+      text-align: center;
+      padding: 24px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .reward-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.7rem;
+      color: #d32f2f;
+      margin-bottom: 6px;
+    }
+
+    .reward-desc {
+      color: #8892b0;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .game-picker {
+      display: none;
+    }
+
+    .game-pick-btn {
+      display: none;
+    }
+
+    .game-instructions {
+      background: #fff5f5;
+      border-radius: 12px;
+      padding: 9px 16px;
+      font-size: .88rem;
+      font-weight: 700;
+      color: #d32f2f;
+      margin-bottom: 12px;
+      border-left: 3px solid #d32f2f;
+    }
+
+    .game-area {
+      margin: 12px 0;
+      min-height: 120px;
+    }
+
+    .continue-btn {
+      display: none;
+      margin-top: 14px;
+      background: linear-gradient(135deg, #43c97e, #1a7a47);
+      color: #fff;
+      border: none;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.2rem;
+      padding: 14px 36px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(67, 201, 126, .3);
+      transition: all .2s;
+    }
+
+    .continue-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* DONE */
+    .done-screen {
+      text-align: center;
+      padding: 50px 24px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .done-trophy {
+      display: block;
+      margin: 0 auto 16px;
+      animation: ep-float 3s ease-in-out infinite;
+    }
+
+    .done-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.2rem;
+      color: #d32f2f;
+      margin-bottom: 6px;
+    }
+
+    .done-sub {
+      color: #8892b0;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 28px;
+    }
+
+    .done-stats {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .stat-pill {
+      background: #fff;
+      border-radius: 20px;
+      padding: 12px 22px;
+      box-shadow: 0 2px 12px rgba(211, 47, 47, .1);
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.25rem;
+      color: #2d3561;
+      border-top: 3px solid #d32f2f;
+    }
+
+    .stat-pill span {
+      display: block;
+      font-family: 'Nunito', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #8892b0;
+    }
+  </style>
+</head>
+
+<body class="theme-spider-man">
+
+  <div class="topbar">
+    <a href="../../index.html" class="topbar-back">←</a>
+    <div class="topbar-avatar">
+      <img src="../../assets/homem%20aranha.png" alt="Spider-Man" style="width:44px;height:44px;object-fit:contain;">
+    </div>
+    <div class="topbar-info">
+      <div class="topbar-title">Charlie — Escola & Aventuras</div>
+      <div class="topbar-sub">Unit 1 · Chapters 1 & 2</div>
+    </div>
+    <div class="topbar-score">⭐ <span id="score-display">0</span></div>
+  </div>
+
+  <!-- START -->
+  <div id="screen-start" class="screen active">
+    <div class="start-screen">
+      <img src="../../assets/homem%20aranha.png" alt="Spider-Man" class="start-hero" style="width:150px;height:150px;object-fit:contain;">
+      <h1 class="start-title">Escola & Aventuras!</h1>
+      <p class="start-desc">Oi, Charlie! O Homem-Aranha precisa de você para completar a missão! Aprenda os materiais,
+        transportes, emoções e os 5 sentidos!</p>
+      <div class="sections-preview">
+        <div class="sec-item"><span style="font-size:1.5rem">✏️</span> Materiais Escolares <span class="si-count">8
+            perguntas</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">🚗</span> Meios de Transporte <span class="si-count">5
+            perguntas</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">😊</span> Emoções <span class="si-count">4 perguntas</span>
+        </div>
+        <div class="sec-item"><span style="font-size:1.5rem">👃</span> Os 5 Sentidos <span class="si-count">5
+            perguntas</span></div>
+      </div>
+      <button class="start-btn" onclick="startGame()">🕸️ Começar a missão!</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="screen-quiz" class="screen">
+    <div class="section-header">
+      <span class="sec-emoji" id="sec-emoji">✏️</span>
+      <div class="sec-title" id="sec-title">Materiais Escolares</div>
+      <div class="sec-desc" id="sec-desc">Identifique os materiais!</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span id="prog-text">Pergunta 1 de 8</span><span id="prog-pct">0%</span></div>
+      <div class="ep-progress">
+        <div class="ep-progress-fill" id="prog-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="question-area" id="question-area"></div>
+  </div>
+
+  <!-- REWARD -->
+  <div id="screen-reward" class="screen">
+    <div class="reward-screen">
+      <div class="reward-title" id="reward-title">🎉 Seção Completa!</div>
+      <div class="reward-desc" id="reward-desc">Arrasou! Hora de um mini-game!</div>
+      <div class="game-picker" id="game-picker"></div>
+      <div class="game-instructions" id="game-instructions"></div>
+      <div class="game-area ep-game-container" id="game-area"></div>
+      <button class="continue-btn" id="continue-btn" onclick="advanceSection()">Próxima Seção ▶</button>
+    </div>
+  </div>
+
+  <!-- DONE -->
+  <div id="screen-done" class="screen">
+    <div class="done-screen">
+      <svg class="done-trophy" viewBox="0 0 120 120" width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="56" fill="#CC0000" />
+        <line x1="60" y1="4" x2="60" y2="116" stroke="#800000" stroke-width="1.5" opacity="0.5" />
+        <line x1="4" y1="60" x2="116" y2="60" stroke="#800000" stroke-width="1.5" opacity="0.5" />
+        <line x1="20" y1="20" x2="100" y2="100" stroke="#800000" stroke-width="1.5" opacity="0.5" />
+        <line x1="100" y1="20" x2="20" y2="100" stroke="#800000" stroke-width="1.5" opacity="0.5" />
+        <text x="60" y="75" text-anchor="middle" font-size="56" fill="#FFD700">🏆</text>
+      </svg>
+      <h2 class="done-title">Missão cumprida, Charlie!</h2>
+      <p class="done-sub">Você completou a Unit 1! O Homem-Aranha ficaria orgulhoso! 🕸️</p>
+      <div class="done-stats">
+        <div class="stat-pill" id="stat-correct">0 <span>acertos</span></div>
+        <div class="stat-pill" id="stat-total">0 <span>tentativas</span></div>
+        <div class="stat-pill" id="stat-pct">0% <span>precisão</span></div>
+      </div>
+      <div class="ep-stars" id="done-stars" style="margin-bottom:28px;">
+        <span class="ep-star">⭐</span><span class="ep-star">⭐</span><span class="ep-star">⭐</span>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="start-btn" style="font-size:1.1rem;padding:13px 30px;" onclick="restartGame()">🔄 Jogar
+          Novamente</button>
+        <a href="../../index.html" class="start-btn"
+          style="font-size:1.1rem;padding:13px 30px;background:linear-gradient(135deg,#1565c0,#0d47a1);">🏠 Menu</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../lib/eduplay.js"></script>
+  <script src="../../lib/reward-games.js"></script>
+  <script src="../../lib/games/snake.js"></script>
+  <script src="../../lib/games/tetris.js"></script>
+  <script src="../../lib/games/tictactoe.js"></script>
+  <script>
+    const SECTIONS = [
+      {
+        id: 'school-supplies', title: 'Materiais Escolares', desc: 'Qual é o nome desse material?', emoji: '✏️', questions: [
+          { id: 'ss1', type: 'multiple', text: 'O que é isso?', questionEmoji: '✏️', audio: 'pencil', options: [{ id: 'a', label: 'Pencil', emoji: '✏️', correct: true }, { id: 'b', label: 'Pen', emoji: '🖊️', correct: false }, { id: 'c', label: 'Eraser', emoji: '🧹', correct: false }, { id: 'd', label: 'Book', emoji: '📘', correct: false }] },
+          { id: 'ss2', type: 'multiple', text: 'Como se chama?', questionEmoji: '🖊️', audio: 'pen', options: [{ id: 'a', label: 'Pencil', emoji: '✏️', correct: false }, { id: 'b', label: 'Pen', emoji: '🖊️', correct: true }, { id: 'c', label: 'Notebook', emoji: '📓', correct: false }, { id: 'd', label: 'Eraser', emoji: '🧹', correct: false }] },
+          { id: 'ss3', type: 'multiple', text: 'O que é isso?', questionEmoji: '🧹', audio: 'eraser', options: [{ id: 'a', label: 'Pencil Sharpener', emoji: '🔧', correct: false }, { id: 'b', label: 'Book', emoji: '📘', correct: false }, { id: 'c', label: 'Eraser', emoji: '🧹', correct: true }, { id: 'd', label: 'Pen', emoji: '🖊️', correct: false }] },
+          { id: 'ss4', type: 'multiple', text: 'Como se chama?', questionEmoji: '🔧', audio: 'pencil sharpener', options: [{ id: 'a', label: 'Pencil Sharpener', emoji: '🔧', correct: true }, { id: 'b', label: 'Colored Pencil', emoji: '🖍️', correct: false }, { id: 'c', label: 'Eraser', emoji: '🧹', correct: false }, { id: 'd', label: 'School Bag', emoji: '🎒', correct: false }] },
+          { id: 'ss5', type: 'multiple', text: 'O que é isso?', questionEmoji: '🖍️', audio: 'colored pencil', options: [{ id: 'a', label: 'Pen', emoji: '🖊️', correct: false }, { id: 'b', label: 'Colored Pencil', emoji: '🖍️', correct: true }, { id: 'c', label: 'Pencil', emoji: '✏️', correct: false }, { id: 'd', label: 'Notebook', emoji: '📓', correct: false }] },
+          { id: 'ss6', type: 'multiple', text: 'O que é isso?', questionEmoji: '📘', audio: 'book', options: [{ id: 'a', label: 'Notebook', emoji: '📓', correct: false }, { id: 'b', label: 'School Bag', emoji: '🎒', correct: false }, { id: 'c', label: 'Book', emoji: '📘', correct: true }, { id: 'd', label: 'Eraser', emoji: '🧹', correct: false }] },
+          { id: 'ss7', type: 'multiple', text: 'O que é isso?', questionEmoji: '📓', audio: 'notebook', options: [{ id: 'a', label: 'Book', emoji: '📘', correct: false }, { id: 'b', label: 'Notebook', emoji: '📓', correct: true }, { id: 'c', label: 'Pen', emoji: '🖊️', correct: false }, { id: 'd', label: 'Colored Pencil', emoji: '🖍️', correct: false }] },
+          { id: 'ss8', type: 'multiple', text: 'O que é isso?', questionEmoji: '🎒', audio: 'school bag', options: [{ id: 'a', label: 'Book', emoji: '📘', correct: false }, { id: 'b', label: 'Notebook', emoji: '📓', correct: false }, { id: 'c', label: 'Pencil Sharpener', emoji: '🔧', correct: false }, { id: 'd', label: 'School Bag', emoji: '🎒', correct: true }] },
+        ]
+      },
+      {
+        id: 'transport', title: 'Meios de Transporte', desc: 'Como as pessoas chegam na escola?', emoji: '🚗', questions: [
+          { id: 'tr1', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚲', audio: 'bike', options: [{ id: 'a', label: 'Bike', emoji: '🚲', correct: true }, { id: 'b', label: 'Car', emoji: '🚗', correct: false }, { id: 'c', label: 'Van', emoji: '🚐', correct: false }, { id: 'd', label: 'Motorbike', emoji: '🛵', correct: false }] },
+          { id: 'tr2', type: 'multiple', text: 'O que é isso?', questionEmoji: '🛵', audio: 'motorbike', options: [{ id: 'a', label: 'Bike', emoji: '🚲', correct: false }, { id: 'b', label: 'Motorbike', emoji: '🛵', correct: true }, { id: 'c', label: 'Car', emoji: '🚗', correct: false }, { id: 'd', label: 'Van', emoji: '🚐', correct: false }] },
+          { id: 'tr3', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚗', audio: 'car', options: [{ id: 'a', label: 'Van', emoji: '🚐', correct: false }, { id: 'b', label: 'Motorbike', emoji: '🛵', correct: false }, { id: 'c', label: 'Car', emoji: '🚗', correct: true }, { id: 'd', label: 'Bike', emoji: '🚲', correct: false }] },
+          { id: 'tr4', type: 'multiple', text: 'O que é isso?', questionEmoji: '🚐', audio: 'van', options: [{ id: 'a', label: 'Car', emoji: '🚗', correct: false }, { id: 'b', label: 'Van', emoji: '🚐', correct: true }, { id: 'c', label: 'Bike', emoji: '🚲', correct: false }, { id: 'd', label: 'Motorbike', emoji: '🛵', correct: false }] },
+          { id: 'tr5', type: 'multiple', text: 'Ben vai à escola como?', questionEmoji: '🚗', audio: 'I go to school by car', hint: '"I go to school by car." — Como Ben vai à escola?', hintAudio: 'I go to school by car', options: [{ id: 'a', label: 'On Foot', emoji: '🚶', correct: false }, { id: 'b', label: 'By Bike', emoji: '🚲', correct: false }, { id: 'c', label: 'By Car', emoji: '🚗', correct: true }, { id: 'd', label: 'By Van', emoji: '🚐', correct: false }] },
+        ]
+      },
+      {
+        id: 'emotions', title: 'Emoções', desc: 'Como você está se sentindo?', emoji: '😊', questions: [
+          { id: 'em1', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😢', audio: 'they are sad', options: [{ id: 'a', label: 'They are happy', emoji: '😄', correct: false }, { id: 'b', label: 'They are sad', emoji: '😢', correct: true }, { id: 'c', label: 'They are angry', emoji: '😠', correct: false }, { id: 'd', label: 'They are afraid', emoji: '😨', correct: false }] },
+          { id: 'em2', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😠', audio: 'they are angry', options: [{ id: 'a', label: 'They are afraid', emoji: '😨', correct: false }, { id: 'b', label: 'They are sad', emoji: '😢', correct: false }, { id: 'c', label: 'They are angry', emoji: '😠', correct: true }, { id: 'd', label: 'They are happy', emoji: '😄', correct: false }] },
+          { id: 'em3', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😨', audio: 'they are afraid', options: [{ id: 'a', label: 'They are happy', emoji: '😄', correct: false }, { id: 'b', label: 'They are angry', emoji: '😠', correct: false }, { id: 'c', label: 'They are sad', emoji: '😢', correct: false }, { id: 'd', label: 'They are afraid', emoji: '😨', correct: true }] },
+          { id: 'em4', type: 'multiple', text: 'Como eles estão?', questionEmoji: '😄', audio: 'they are happy', options: [{ id: 'a', label: 'They are happy', emoji: '😄', correct: true }, { id: 'b', label: 'They are sad', emoji: '😢', correct: false }, { id: 'c', label: 'They are angry', emoji: '😠', correct: false }, { id: 'd', label: 'They are afraid', emoji: '😨', correct: false }] },
+        ]
+      },
+      {
+        id: 'senses', title: 'Os 5 Sentidos', desc: 'Qual sentido usamos?', emoji: '👃', questions: [
+          { id: 'se1', type: 'multiple', text: 'Qual sentido usamos para cheirar?', questionEmoji: '👃', audio: 'smell', options: [{ id: 'a', label: 'Sight', emoji: '👁️', correct: false }, { id: 'b', label: 'Smell', emoji: '👃', correct: true }, { id: 'c', label: 'Touch', emoji: '✋', correct: false }, { id: 'd', label: 'Taste', emoji: '👅', correct: false }] },
+          { id: 'se2', type: 'multiple', text: 'Qual sentido usamos para ouvir?', questionEmoji: '👂', audio: 'hearing', options: [{ id: 'a', label: 'Taste', emoji: '👅', correct: false }, { id: 'b', label: 'Sight', emoji: '👁️', correct: false }, { id: 'c', label: 'Hearing', emoji: '👂', correct: true }, { id: 'd', label: 'Touch', emoji: '✋', correct: false }] },
+          { id: 'se3', type: 'multiple', text: 'Qual sentido usamos para ver?', questionEmoji: '👁️', audio: 'sight', options: [{ id: 'a', label: 'Sight', emoji: '👁️', correct: true }, { id: 'b', label: 'Smell', emoji: '👃', correct: false }, { id: 'c', label: 'Hearing', emoji: '👂', correct: false }, { id: 'd', label: 'Taste', emoji: '👅', correct: false }] },
+          { id: 'se4', type: 'multiple', text: 'Qual sentido usamos para provar?', questionEmoji: '👅', audio: 'taste', options: [{ id: 'a', label: 'Touch', emoji: '✋', correct: false }, { id: 'b', label: 'Smell', emoji: '👃', correct: false }, { id: 'c', label: 'Sight', emoji: '👁️', correct: false }, { id: 'd', label: 'Taste', emoji: '👅', correct: true }] },
+          { id: 'se5', type: 'multiple', text: 'Qual sentido usamos para tocar?', questionEmoji: '✋', audio: 'touch', options: [{ id: 'a', label: 'Touch', emoji: '✋', correct: true }, { id: 'b', label: 'Smell', emoji: '👃', correct: false }, { id: 'c', label: 'Hearing', emoji: '👂', correct: false }, { id: 'd', label: 'Sight', emoji: '👁️', correct: false }] },
+        ]
+      },
+    ];
+
+    let engine, totalScore = 0, currentGame = null, selectedGameType = 'snake', questionAnswered = false;
+
+    function showScreen(id) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('screen-' + id).classList.add('active'); }
+
+    function startGame() {
+      engine = new EduPlay.QuizEngine(SECTIONS, { maxRepeats: 2, onAllComplete: () => setTimeout(showDoneScreen, 800) });
+      totalScore = 0; document.getElementById('score-display').textContent = 0;
+      renderQuiz(); showScreen('quiz');
+    }
+    function restartGame() { startGame(); }
+
+    function renderQuiz() {
+      const q = engine.current(); if (!q) return;
+      const sec = SECTIONS[engine.currentSection];
+      document.getElementById('sec-emoji').textContent = sec.emoji;
+      document.getElementById('sec-title').textContent = sec.title;
+      document.getElementById('sec-desc').textContent = sec.desc;
+      const { done, total } = engine.sectionProgress();
+      const pct = total > 0 ? Math.round(done / total * 100) : 0;
+      document.getElementById('prog-text').textContent = `Pergunta ${done + 1} de ${total}`;
+      document.getElementById('prog-pct').textContent = pct + '%';
+      document.getElementById('prog-fill').style.width = pct + '%';
+
+      const area = document.getElementById('question-area');
+      area.innerHTML = ''; questionAnswered = false;
+      const isRepeat = engine.errors[q.id] !== undefined;
+      const card = document.createElement('div'); card.className = 'q-card';
+
+      const lbl = document.createElement('div'); lbl.className = 'q-label';
+      lbl.innerHTML = '<span>🕸️ Pergunta</span>';
+      if (isRepeat) lbl.innerHTML += '<span class="q-repeat-badge">🔁 Repetição</span>';
+      card.appendChild(lbl);
+
+      if (isRepeat) { const n = document.createElement('div'); n.style.cssText = 'text-align:center;margin-bottom:8px;font-size:.85rem;color:#9a6700;font-weight:700;background:#fffbea;border-radius:8px;padding:5px 10px;'; n.textContent = '⚠️ Erramos essa — tenta de novo!'; card.appendChild(n); }
+
+      const qt = document.createElement('div'); qt.className = 'q-text';
+      if (q.questionEmoji) { const em = document.createElement('span'); em.style.fontSize = '2.2rem'; em.textContent = q.questionEmoji; qt.appendChild(em); }
+      const txt = document.createElement('span'); txt.textContent = q.text; qt.appendChild(txt);
+      if (q.audio) qt.appendChild(EduPlay.UI.playBtn(q.audio));
+      card.appendChild(qt);
+
+      if (q.hint) { const hb = document.createElement('div'); hb.className = 'hint-box'; hb.innerHTML = `<span>💬 ${q.hint}</span>`; if (q.hintAudio) hb.appendChild(EduPlay.UI.playBtn(q.hintAudio)); card.appendChild(hb); }
+
+      const grid = document.createElement('div'); grid.className = 'options-grid cols-2';
+      const opts = [...q.options].sort(() => Math.random() - .5);
+      opts.forEach(opt => {
+        const btn = document.createElement('button'); btn.className = 'option-btn';
+        btn.innerHTML = `<span>${opt.label}</span>`;
+        const pb = EduPlay.UI.playBtn(opt.label); pb.style.marginLeft = 'auto'; btn.appendChild(pb);
+        btn.onclick = () => handleAnswer(btn, opt.correct, grid, q);
+        grid.appendChild(btn);
+      });
+      card.appendChild(grid);
+      area.appendChild(card);
+    }
+
+    function handleAnswer(btn, correct, grid, q) {
+      if (questionAnswered) return; questionAnswered = true;
+      grid.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+      if (correct) {
+        btn.classList.add('correct');
+        totalScore += 10; document.getElementById('score-display').textContent = totalScore;
+        EduPlay.UI.feedback(document.body, true, '✅ Correto!');
+        EduPlay.UI.confetti(document.body, 45);
+        EduPlay.TTS.speak('Correct! Great job!', 'en-US');
+      } else {
+        btn.classList.add('wrong');
+        grid.querySelectorAll('.option-btn').forEach(b => { const lbl = b.querySelector('span:nth-child(2)')?.textContent; if (q.options.find(o => o.label === lbl)?.correct) b.classList.add('correct'); });
+        EduPlay.UI.feedback(document.body, false, '❌ Tente de novo!');
+        EduPlay.TTS.speak('Try again!', 'en-US');
+      }
+      engine.answer(q.id, correct);
+      setTimeout(() => { if (engine.phase === 'quiz') renderQuiz(); else if (engine.phase === 'reward') showRewardScreen(); else if (engine.phase === 'done') showDoneScreen(); }, 1400);
+    }
+
+    function showRewardScreen() {
+      showScreen('reward');
+      const secIdx = engine._pendingNext !== undefined ? engine._pendingNext - 1 : engine.currentSection;
+      const sec = SECTIONS[secIdx] || SECTIONS[engine.currentSection];
+      const next = SECTIONS[engine._pendingNext];
+      document.getElementById('reward-title').textContent = `🎉 "${sec.title}" completo!`;
+      document.getElementById('reward-desc').textContent = next ? `Arrasou! Hora de um mini-game! Depois: "${next.title}"!` : 'Incrível! Último mini-game!';
+      // Sorteia um jogo aleatório a cada recompensa
+      const randomList = [...RewardGames.list].sort(() => Math.random() - .5);
+      selectedGameType = randomList[0];
+      renderRewardGame();
+    }
+
+    function renderRewardGame() {
+      if (currentGame) { currentGame.destroy?.(); currentGame = null; }
+      const area = document.getElementById('game-area'); area.innerHTML = '';
+      document.getElementById('game-instructions').textContent = '💡 ' + RewardGames.instructions[selectedGameType];
+      const cb = document.getElementById('continue-btn'); cb.style.display = 'none';
+      currentGame = RewardGames[selectedGameType](area, 45, score => { totalScore += score; document.getElementById('score-display').textContent = totalScore; cb.style.display = 'inline-block'; EduPlay.UI.confetti(document.body, 30); });
+    }
+
+    function advanceSection() {
+      if (currentGame) { currentGame.destroy?.(); currentGame = null; }
+      engine.advanceAfterReward(); renderQuiz(); showScreen('quiz');
+    }
+
+    function showDoneScreen() {
+      showScreen('done');
+      const prog = engine.score, pct = prog.total > 0 ? Math.round(prog.correct / prog.total * 100) : 0;
+      const stars = pct >= 90 ? 3 : pct >= 60 ? 2 : 1;
+      document.getElementById('stat-correct').innerHTML = `${prog.correct} <span>acertos</span>`;
+      document.getElementById('stat-total').innerHTML = `${prog.total} <span>tentativas</span>`;
+      document.getElementById('stat-pct').innerHTML = `${pct}% <span>precisão</span>`;
+      document.querySelectorAll('#done-stars .ep-star').forEach((el, i) => setTimeout(() => el.classList.toggle('lit', i < stars), i * 400));
+      EduPlay.UI.confetti(document.body, 80);
+      EduPlay.Progress.save('charlie-unit1', { stars, correct: prog.correct, total: prog.total, pct });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+/* ============================================================
+   EduPlay Global Styles v1.0
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ep-primary:   #5b8dee;
+  --ep-secondary: #ff7043;
+  --ep-success:   #43c97e;
+  --ep-danger:    #ff5c6a;
+  --ep-warning:   #ffd93d;
+  --ep-purple:    #9b5de5;
+  --ep-bg:        #f0f4ff;
+  --ep-card:      #ffffff;
+  --ep-text:      #2d3561;
+  --ep-muted:     #8892b0;
+  --ep-radius:    18px;
+  --ep-shadow:    0 4px 20px rgba(91,141,238,.15);
+  --ep-font:      'Nunito', sans-serif;
+  --ep-display:   'Fredoka One', cursive;
+}
+
+body {
+  font-family: var(--ep-font);
+  background: var(--ep-bg);
+  color: var(--ep-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---------- Play Button ---------- */
+.ep-play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ep-primary);
+  color: #fff;
+  cursor: pointer;
+  transition: transform .15s, background .15s;
+  flex-shrink: 0;
+}
+.ep-play-btn svg { width: 18px; height: 18px; }
+.ep-play-btn:hover { transform: scale(1.1); background: #4578d5; }
+.ep-play-btn.playing { background: var(--ep-success); animation: ep-pulse .6s infinite alternate; }
+
+@keyframes ep-pulse {
+  from { box-shadow: 0 0 0 0 rgba(67,201,126,.4); }
+  to   { box-shadow: 0 0 0 10px rgba(67,201,126,0); }
+}
+
+/* ---------- Confetti ---------- */
+.ep-confetti {
+  position: fixed;
+  top: -20px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: ep-fall linear forwards;
+}
+@keyframes ep-fall {
+  from { transform: translateY(0) rotate(0deg); opacity: 1; }
+  to   { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ---------- Feedback Toast ---------- */
+.ep-feedback {
+  position: fixed;
+  top: 24px; left: 50%;
+  transform: translateX(-50%) translateY(0);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: var(--ep-display);
+  font-size: 1.3rem;
+  color: #fff;
+  z-index: 999;
+  pointer-events: none;
+  animation: ep-toast-in .25s ease;
+  box-shadow: 0 6px 24px rgba(0,0,0,.2);
+}
+.ep-feedback-ok  { background: var(--ep-success); }
+.ep-feedback-err { background: var(--ep-danger); }
+.ep-feedback-hide { animation: ep-toast-out .35s ease forwards; }
+
+@keyframes ep-toast-in  { from { opacity:0; top:0; } to { opacity:1; top:24px; } }
+@keyframes ep-toast-out { from { opacity:1; } to { opacity:0; top:0; } }
+
+/* ---------- Progress Bar ---------- */
+.ep-progress {
+  width: 100%; height: 12px;
+  background: #dce6ff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ep-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ep-primary), var(--ep-purple));
+  border-radius: 8px;
+  transition: width .4s ease;
+}
+
+/* ---------- Cards ---------- */
+.ep-card {
+  background: var(--ep-card);
+  border-radius: var(--ep-radius);
+  box-shadow: var(--ep-shadow);
+  padding: 24px;
+}
+
+/* ---------- Buttons ---------- */
+.ep-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: none;
+  font-family: var(--ep-display);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+.ep-btn:hover   { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.15); }
+.ep-btn:active  { transform: translateY(0); }
+.ep-btn-primary { background: var(--ep-primary); color: #fff; }
+.ep-btn-success { background: var(--ep-success); color: #fff; }
+.ep-btn-warning { background: var(--ep-warning); color: var(--ep-text); }
+.ep-btn-big     { font-size: 1.4rem; padding: 16px 40px; }
+
+/* ---------- Stars ---------- */
+.ep-stars { display: flex; gap: 6px; justify-content: center; }
+.ep-star  {
+  font-size: 2rem;
+  filter: grayscale(1) opacity(.4);
+  transition: filter .3s, transform .3s;
+}
+.ep-star.lit { filter: none; transform: scale(1.2); }
+
+/* ---------- Overlay (reward / done) ---------- */
+.ep-overlay {
+  position: fixed; inset: 0;
+  background: rgba(20,30,70,.7);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 800;
+  animation: ep-fade-in .3s ease;
+}
+@keyframes ep-fade-in { from { opacity:0; } to { opacity:1; } }
+
+.ep-overlay-box {
+  background: var(--ep-card);
+  border-radius: 28px;
+  padding: 40px 48px;
+  max-width: 520px; width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  animation: ep-pop-in .35s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes ep-pop-in { from { transform: scale(.7); opacity:0; } to { transform: scale(1); opacity:1; } }
+
+.ep-overlay-title {
+  font-family: var(--ep-display);
+  font-size: 2.2rem;
+  color: var(--ep-text);
+  margin-bottom: 8px;
+}
+
+/* ---------- Game Canvas Container ---------- */
+.ep-game-container {
+  width: 100%; max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+}
+.ep-game-container canvas {
+  display: block;
+  border-radius: 16px;
+  box-shadow: var(--ep-shadow);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--ep-bg); }
+::-webkit-scrollbar-thumb { background: #c0cfe8; border-radius: 4px; }

@@ -1,0 +1,89 @@
+/* ============================================================
+   EduPlay Themes v1.0
+   Aplique uma classe de tema ao <body> do jogo para ativar.
+   Cada tema sobrescreve as CSS vars de eduplay.css.
+
+   Uso:  <body class="theme-spider-man">
+   ============================================================ */
+
+/* ---------- Spider-Man (Charlie) ---------- */
+.theme-spider-man {
+  --ep-primary:   #CC0000;
+  --ep-secondary: #000080;
+  --ep-success:   #43c97e;
+  --ep-danger:    #ff6b7a;
+  --ep-warning:   #ffd93d;
+  --ep-purple:    #8B0000;
+  --ep-bg:        #fff5f5;
+  --ep-card:      #ffffff;
+  --ep-text:      #1a0000;
+  --ep-muted:     #9a7070;
+  --ep-radius:    18px;
+  --ep-shadow:    0 4px 20px rgba(204,0,0,.15);
+  --ep-font:      'Nunito', sans-serif;
+  --ep-display:   'Fredoka One', cursive;
+  background:     linear-gradient(160deg, #fff5f5 0%, #ffeaea 100%);
+}
+
+/* Topbar Spider-Man */
+.theme-spider-man .ep-topbar {
+  background: linear-gradient(135deg, #CC0000, #8B0000);
+  box-shadow: 0 3px 16px rgba(139, 0, 0, .35);
+}
+
+/* Barra de progresso vermelha */
+.theme-spider-man .ep-progress-fill {
+  background: linear-gradient(90deg, #CC0000, #ff7043);
+}
+
+/* Botões primários */
+.theme-spider-man .ep-btn-primary {
+  background: linear-gradient(135deg, #CC0000, #8B0000);
+}
+
+/* ---------- Stitch (Sophia) ---------- */
+.theme-stitch {
+  --ep-primary:   #4488DD;
+  --ep-secondary: #2255AA;
+  --ep-success:   #43c97e;
+  --ep-danger:    #ff5c6a;
+  --ep-warning:   #ffd93d;
+  --ep-purple:    #6699EE;
+  --ep-bg:        #f0f6ff;
+  --ep-card:      #ffffff;
+  --ep-text:      #0d2a5e;
+  --ep-muted:     #7090b0;
+  --ep-radius:    18px;
+  --ep-shadow:    0 4px 20px rgba(68,136,221,.15);
+  --ep-font:      'Nunito', sans-serif;
+  --ep-display:   'Fredoka One', cursive;
+  background:     linear-gradient(160deg, #f0f6ff 0%, #e8f0ff 100%);
+}
+
+.theme-stitch .ep-topbar {
+  background: linear-gradient(135deg, #4488DD, #0d47a1);
+  box-shadow: 0 3px 16px rgba(13, 71, 161, .35);
+}
+
+.theme-stitch .ep-progress-fill {
+  background: linear-gradient(90deg, #4488DD, #6699EE);
+}
+
+.theme-stitch .ep-btn-primary {
+  background: linear-gradient(135deg, #4488DD, #0d47a1);
+}
+
+/* ---------- Teia decorativa (Spider-Man) ----------
+   Use <div class="ep-web-bg"></div> como background decorativo */
+.ep-web-bg {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; opacity: .04;
+}
+.ep-web-bg::before,
+.ep-web-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #CC0000;
+}
+.ep-web-bg::before { width: 600px; height: 600px; top: -200px; left: -200px; }
+.ep-web-bg::after  { width: 400px; height: 400px; bottom: -100px; right: -100px; }
