@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐾 Sophia – Athlete's Lifestyle</title>
+  <link rel="stylesheet" href="../../lib/eduplay.css">
+  <link rel="stylesheet" href="../../lib/themes.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #e8f4ff 0%, #d0eaff 100%);
+    }
+
+    /* TOP BAR */
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #1a6fc4, #0d4a8a);
+      box-shadow: 0 3px 16px rgba(13, 74, 138, .35);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-back {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: none;
+      background: rgba(255, 255, 255, .18);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+      text-decoration: none;
+    }
+
+    .topbar-back:hover { background: rgba(255, 255, 255, .3); }
+
+    .topbar-avatar {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .topbar-info { flex: 1; }
+
+    .topbar-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.15rem;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .topbar-sub {
+      font-size: .77rem;
+      color: rgba(255, 255, 255, .75);
+      font-weight: 600;
+    }
+
+    .topbar-score {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.15rem;
+      color: #fff;
+      background: rgba(255, 255, 255, .2);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* SECTION HEADER */
+    .section-header {
+      text-align: center;
+      padding: 28px 20px 14px;
+    }
+
+    .sec-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .sec-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+      color: #1a6fc4;
+    }
+
+    .sec-desc {
+      color: #8892b0;
+      font-weight: 600;
+      margin-top: 4px;
+      font-size: .95rem;
+    }
+
+    /* PROGRESS */
+    .progress-wrap {
+      max-width: 580px;
+      margin: 0 auto 20px;
+      padding: 0 20px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .83rem;
+      font-weight: 700;
+      color: #8892b0;
+      margin-bottom: 6px;
+    }
+
+    .ep-progress-fill {
+      background: linear-gradient(90deg, #1a6fc4, #4488dd) !important;
+    }
+
+    /* QUESTION CARD */
+    .question-area {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .q-card {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 6px 28px rgba(26, 111, 196, .1);
+      padding: 24px 24px 18px;
+      margin-bottom: 18px;
+      border-top: 4px solid #1a6fc4;
+      animation: q-slide-in .3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    @keyframes q-slide-in {
+      from { opacity: 0; transform: translateY(18px) scale(.97) }
+      to   { opacity: 1; transform: translateY(0) scale(1) }
+    }
+
+    .q-label {
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #1a6fc4;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .q-repeat-badge {
+      background: #fff3cd;
+      color: #9a6700;
+      font-size: .74rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      border: 1px solid #ffc107;
+    }
+
+    .q-text {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.2rem, 4vw, 1.7rem);
+      color: #2d3561;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hint-box {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #eef6ff;
+      border-radius: 12px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #1a6fc4;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 3px solid #1a6fc4;
+    }
+
+    /* OPTIONS */
+    .options-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .options-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+
+    .option-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      border-radius: 14px;
+      border: 2.5px solid #cce0f5;
+      background: #f5faff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2d3561;
+      cursor: pointer;
+      text-align: left;
+      transition: all .18s;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: #1a6fc4;
+      background: #eef6ff;
+      transform: translateX(4px);
+    }
+
+    .option-btn.correct {
+      border-color: #43c97e !important;
+      background: #e8faf0 !important;
+      color: #1a7a47;
+    }
+
+    .option-btn.wrong {
+      border-color: #ff5c6a !important;
+      background: #fff0f2 !important;
+      color: #c0392b;
+    }
+
+    .option-btn:disabled { cursor: default; }
+
+    /* TRUE/FALSE options */
+    .tf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .tf-btn {
+      padding: 20px 10px;
+      border-radius: 18px;
+      border: 3px solid #cce0f5;
+      background: #f5faff;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all .18s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tf-btn .tf-label {
+      font-size: .9rem;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .tf-btn:hover:not(:disabled) {
+      border-color: #1a6fc4;
+      background: #eef6ff;
+      transform: scale(1.04);
+    }
+
+    .tf-btn.correct {
+      border-color: #43c97e !important;
+      background: #e8faf0 !important;
+    }
+
+    .tf-btn.wrong {
+      border-color: #ff5c6a !important;
+      background: #fff0f2 !important;
+    }
+
+    .tf-btn:disabled { cursor: default; }
+
+    /* SCREENS */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* START */
+    .start-screen {
+      text-align: center;
+      padding: 40px 24px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .start-hero {
+      display: block;
+      margin: 0 auto 16px;
+      filter: drop-shadow(0 8px 20px rgba(26, 111, 196, .4));
+      animation: ep-float 3s ease-in-out infinite;
+    }
+
+    .start-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.2rem;
+      color: #1a6fc4;
+      margin-bottom: 6px;
+    }
+
+    .start-desc {
+      color: #8892b0;
+      font-weight: 600;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .sections-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .sec-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(26, 111, 196, .07);
+      font-weight: 700;
+      color: #2d3561;
+      border-left: 4px solid #1a6fc4;
+    }
+
+    .sec-item .si-count {
+      margin-left: auto;
+      font-size: .83rem;
+      color: #8892b0;
+      background: #eef6ff;
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+
+    .start-btn {
+      background: linear-gradient(135deg, #1a6fc4, #0d4a8a);
+      color: #fff;
+      border: none;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      padding: 16px 44px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(26, 111, 196, .35);
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .start-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(26, 111, 196, .4);
+    }
+
+    /* REWARD */
+    .reward-screen {
+      text-align: center;
+      padding: 24px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .reward-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.7rem;
+      color: #1a6fc4;
+      margin-bottom: 6px;
+    }
+
+    .reward-desc {
+      color: #8892b0;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .game-instructions {
+      background: #eef6ff;
+      border-radius: 12px;
+      padding: 9px 16px;
+      font-size: .88rem;
+      font-weight: 700;
+      color: #1a6fc4;
+      margin-bottom: 12px;
+      border-left: 3px solid #1a6fc4;
+    }
+
+    .game-area { margin: 12px 0; min-height: 120px; }
+
+    .continue-btn {
+      display: none;
+      margin-top: 14px;
+      background: linear-gradient(135deg, #43c97e, #1a7a47);
+      color: #fff;
+      border: none;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.2rem;
+      padding: 14px 36px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(67, 201, 126, .3);
+      transition: all .2s;
+    }
+
+    .continue-btn:hover { transform: translateY(-2px); }
+
+    /* DONE */
+    .done-screen {
+      text-align: center;
+      padding: 50px 24px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .done-trophy {
+      display: block;
+      margin: 0 auto 16px;
+      animation: ep-float 3s ease-in-out infinite;
+    }
+
+    .done-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.2rem;
+      color: #1a6fc4;
+      margin-bottom: 6px;
+    }
+
+    .done-sub {
+      color: #8892b0;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 28px;
+    }
+
+    .done-stats {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .stat-pill {
+      background: #fff;
+      border-radius: 20px;
+      padding: 12px 22px;
+      box-shadow: 0 2px 12px rgba(26, 111, 196, .1);
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.25rem;
+      color: #2d3561;
+      border-top: 3px solid #1a6fc4;
+    }
+
+    .stat-pill span {
+      display: block;
+      font-family: 'Nunito', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #8892b0;
+    }
+
+    /* Bible Gem highlight */
+    .bible-gem {
+      background: linear-gradient(135deg, #fffbe6, #fff3b0);
+      border: 2px solid #ffd93d;
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: .93rem;
+      font-weight: 700;
+      color: #7a5e00;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  </style>
+</head>
+
+<body class="theme-stitch">
+
+  <div class="topbar">
+    <a href="../../index.html" class="topbar-back">←</a>
+    <div class="topbar-avatar">
+      <img src="../../assets/stitch.png" alt="Stitch" style="width:44px;height:44px;object-fit:contain;">
+    </div>
+    <div class="topbar-info">
+      <div class="topbar-title">Sophia — Athlete's Lifestyle</div>
+      <div class="topbar-sub">Unit 1 · Chapter 1</div>
+    </div>
+    <div class="topbar-score">⭐ <span id="score-display">0</span></div>
+  </div>
+
+  <!-- START -->
+  <div id="screen-start" class="screen active">
+    <div class="start-screen">
+      <img src="../../assets/stitch.png" alt="Stitch" class="start-hero" style="width:150px;height:150px;object-fit:contain;">
+      <h1 class="start-title">Athlete's Lifestyle! 🏃‍♀️</h1>
+      <p class="start-desc">Hi, Sophia! Let's train with Stitch and learn about self-control, healthy foods, sports and numbers!</p>
+      <div class="sections-preview">
+        <div class="sec-item"><span style="font-size:1.5rem">🧠</span> Self-Control <span class="si-count">6 questions</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">🥗</span> Healthy Foods from Plants <span class="si-count">6 questions</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">⚽</span> Sports &amp; Action Verbs <span class="si-count">8 questions</span></div>
+        <div class="sec-item"><span style="font-size:1.5rem">🔢</span> Numbers by Tens <span class="si-count">6 questions</span></div>
+      </div>
+      <button class="start-btn" onclick="startGame()">🐾 Let's Train!</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="screen-quiz" class="screen">
+    <div class="section-header">
+      <span class="sec-emoji" id="sec-emoji">🧠</span>
+      <div class="sec-title" id="sec-title">Self-Control</div>
+      <div class="sec-desc" id="sec-desc">Is this self-control?</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span id="prog-text">Question 1 of 6</span><span id="prog-pct">0%</span></div>
+      <div class="ep-progress">
+        <div class="ep-progress-fill" id="prog-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="question-area" id="question-area"></div>
+  </div>
+
+  <!-- REWARD -->
+  <div id="screen-reward" class="screen">
+    <div class="reward-screen">
+      <div class="reward-title" id="reward-title">🎉 Section Complete!</div>
+      <div class="reward-desc" id="reward-desc">Great job! Time for a mini-game!</div>
+      <div class="game-instructions" id="game-instructions"></div>
+      <div class="game-area ep-game-container" id="game-area"></div>
+      <button class="continue-btn" id="continue-btn" onclick="advanceSection()">Next Section ▶</button>
+    </div>
+  </div>
+
+  <!-- DONE -->
+  <div id="screen-done" class="screen">
+    <div class="done-screen">
+      <!-- Gold trophy with a blue stitch-themed circle -->
+      <svg class="done-trophy" viewBox="0 0 120 120" width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="56" fill="#1a6fc4"/>
+        <circle cx="60" cy="60" r="44" fill="#4488dd" opacity=".4"/>
+        <text x="60" y="78" text-anchor="middle" font-size="56" fill="#FFD700">🏆</text>
+      </svg>
+      <h2 class="done-title">Amazing, Sophia! 🐾</h2>
+      <p class="done-sub">You completed Unit 1! Stitch is so proud of you! 💙</p>
+      <div class="done-stats">
+        <div class="stat-pill" id="stat-correct">0 <span>correct</span></div>
+        <div class="stat-pill" id="stat-total">0 <span>attempts</span></div>
+        <div class="stat-pill" id="stat-pct">0% <span>accuracy</span></div>
+      </div>
+      <div class="ep-stars" id="done-stars" style="margin-bottom:28px;">
+        <span class="ep-star">⭐</span><span class="ep-star">⭐</span><span class="ep-star">⭐</span>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="start-btn" style="font-size:1.1rem;padding:13px 30px;" onclick="restartGame()">🔄 Play Again</button>
+        <a href="../../index.html" class="start-btn" style="font-size:1.1rem;padding:13px 30px;background:linear-gradient(135deg,#d32f2f,#8B0000);">🏠 Menu</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../lib/eduplay.js"></script>
+  <script src="../../lib/reward-games.js"></script>
+  <script>
+    // ─────────────────────────────────────────────────────────
+    // CONTENT — Unit 1, Chapter 1: Athlete's Lifestyle
+    // ─────────────────────────────────────────────────────────
+    const SECTIONS = [
+
+      // ── SECTION 1: Self-Control ──────────────────────────────
+      {
+        id: 'self-control',
+        title: 'Self-Control',
+        desc: 'Athletes need self-control to get good results!',
+        emoji: '🧠',
+        questions: [
+          {
+            id: 'sc1', type: 'truefalse',
+            text: 'Self-control is…',
+            questionEmoji: '⏰',
+            audio: 'to wake up early',
+            hint: 'To wake up early — is this self-control?',
+            hintEmoji: '💡',
+            correctAnswer: true,   // YES
+            yesLabel: 'Yes! ✅',
+            noLabel:  'No ❌',
+          },
+          {
+            id: 'sc2', type: 'truefalse',
+            text: 'Self-control is…',
+            questionEmoji: '🥗',
+            audio: 'to eat healthy food',
+            hint: 'To eat healthy food — is this self-control?',
+            hintEmoji: '💡',
+            correctAnswer: true,
+            yesLabel: 'Yes! ✅',
+            noLabel:  'No ❌',
+          },
+          {
+            id: 'sc3', type: 'truefalse',
+            text: 'Self-control is…',
+            questionEmoji: '👊',
+            audio: 'to fight with friends',
+            hint: 'To fight with friends — is this self-control?',
+            hintEmoji: '💡',
+            correctAnswer: false,  // NO
+            yesLabel: 'Yes! ✅',
+            noLabel:  'No ❌',
+          },
+          {
+            id: 'sc4', type: 'truefalse',
+            text: 'Self-control is…',
+            questionEmoji: '🏃',
+            audio: 'to practice sports',
+            hint: 'To practice sports — is this self-control?',
+            hintEmoji: '💡',
+            correctAnswer: true,
+            yesLabel: 'Yes! ✅',
+            noLabel:  'No ❌',
+          },
+          {
+            id: 'sc5', type: 'truefalse',
+            text: 'Self-control is…',
+            questionEmoji: '🎮',
+            audio: 'to play games all the time',
+            hint: 'To play games all the time — is this self-control?',
+            hintEmoji: '💡',
+            correctAnswer: false,
+            yesLabel: 'Yes! ✅',
+            noLabel:  'No ❌',
+          },
+          {
+            id: 'sc6', type: 'multiple',
+            text: 'Paul wrote: "Every athlete exercises…"',
+            questionEmoji: '📜',
+            audio: 'every athlete exercises self-control',
+            hint: '1 Corinthians 9:25 — Paul\'s Bible Gem!',
+            hintEmoji: '📖',
+            options: [
+              { id: 'a', label: 'self-control', correct: true },
+              { id: 'b', label: 'basketball', correct: false },
+              { id: 'c', label: 'swimming', correct: false },
+              { id: 'd', label: 'running', correct: false },
+            ]
+          },
+        ]
+      },
+
+      // ── SECTION 2: Healthy Foods from Plants ─────────────────
+      {
+        id: 'healthy-foods',
+        title: 'Healthy Foods from Plants',
+        desc: 'Many healthy foods come from plants!',
+        emoji: '🥗',
+        questions: [
+          {
+            id: 'hf1', type: 'multiple',
+            text: 'What is this? It is a leaf.',
+            questionEmoji: '🥬',
+            audio: 'lettuce',
+            options: [
+              { id: 'a', label: 'Lettuce', correct: true },
+              { id: 'b', label: 'Cauliflower', correct: false },
+              { id: 'c', label: 'Radish', correct: false },
+              { id: 'd', label: 'Papaya', correct: false },
+            ]
+          },
+          {
+            id: 'hf2', type: 'multiple',
+            text: 'What is this? It is a fruit.',
+            questionEmoji: '🍈',
+            audio: 'papaya',
+            options: [
+              { id: 'a', label: 'Radish', correct: false },
+              { id: 'b', label: 'Lettuce', correct: false },
+              { id: 'c', label: 'Papaya', correct: true },
+              { id: 'd', label: 'Cauliflower', correct: false },
+            ]
+          },
+          {
+            id: 'hf3', type: 'multiple',
+            text: 'What is this? It is a flower.',
+            questionEmoji: '🥦',
+            audio: 'cauliflower',
+            options: [
+              { id: 'a', label: 'Papaya', correct: false },
+              { id: 'b', label: 'Cauliflower', correct: true },
+              { id: 'c', label: 'Lettuce', correct: false },
+              { id: 'd', label: 'Radish', correct: false },
+            ]
+          },
+          {
+            id: 'hf4', type: 'multiple',
+            text: 'What is this? It is a root.',
+            questionEmoji: '🌱',
+            audio: 'radish',
+            options: [
+              { id: 'a', label: 'Lettuce', correct: false },
+              { id: 'b', label: 'Cauliflower', correct: false },
+              { id: 'c', label: 'Papaya', correct: false },
+              { id: 'd', label: 'Radish', correct: true },
+            ]
+          },
+          {
+            id: 'hf5', type: 'multiple',
+            text: 'Lily eats healthy food. What PART of the plant is a radish?',
+            questionEmoji: '🌿',
+            audio: 'a root',
+            options: [
+              { id: 'a', label: 'A leaf', correct: false },
+              { id: 'b', label: 'A fruit', correct: false },
+              { id: 'c', label: 'A root', correct: true },
+              { id: 'd', label: 'A flower', correct: false },
+            ]
+          },
+          {
+            id: 'hf6', type: 'multiple',
+            text: 'What PART of the plant is lettuce?',
+            questionEmoji: '🥬',
+            audio: 'a leaf',
+            options: [
+              { id: 'a', label: 'A flower', correct: false },
+              { id: 'b', label: 'A trunk', correct: false },
+              { id: 'c', label: 'A fruit', correct: false },
+              { id: 'd', label: 'A leaf', correct: true },
+            ]
+          },
+        ]
+      },
+
+      // ── SECTION 3: Sports & Action Verbs ─────────────────────
+      {
+        id: 'sports-verbs',
+        title: 'Sports & Action Verbs',
+        desc: 'Words that indicate actions are called verbs!',
+        emoji: '⚽',
+        questions: [
+          {
+            id: 'sv1', type: 'multiple',
+            text: 'What sport is this? He practices every week.',
+            questionEmoji: '🏊',
+            audio: 'swimming',
+            options: [
+              { id: 'a', label: 'Swimming', correct: true },
+              { id: 'b', label: 'Basketball', correct: false },
+              { id: 'c', label: 'Volleyball', correct: false },
+              { id: 'd', label: 'Running', correct: false },
+            ]
+          },
+          {
+            id: 'sv2', type: 'multiple',
+            text: 'What sport is this? The girls are playing it at school.',
+            questionEmoji: '🏐',
+            audio: 'volleyball',
+            options: [
+              { id: 'a', label: 'Soccer', correct: false },
+              { id: 'b', label: 'Swimming', correct: false },
+              { id: 'c', label: 'Volleyball', correct: true },
+              { id: 'd', label: 'Basketball', correct: false },
+            ]
+          },
+          {
+            id: 'sv3', type: 'multiple',
+            text: 'What sport is this? They are dribbling an orange ball.',
+            questionEmoji: '🏀',
+            audio: 'basketball',
+            options: [
+              { id: 'a', label: 'Volleyball', correct: false },
+              { id: 'b', label: 'Basketball', correct: true },
+              { id: 'c', label: 'Soccer', correct: false },
+              { id: 'd', label: 'Running', correct: false },
+            ]
+          },
+          {
+            id: 'sv4', type: 'multiple',
+            text: 'What sport is this? The boy is playing with a round black-and-white ball.',
+            questionEmoji: '⚽',
+            audio: 'soccer',
+            options: [
+              { id: 'a', label: 'Basketball', correct: false },
+              { id: 'b', label: 'Swimming', correct: false },
+              { id: 'c', label: 'Volleyball', correct: false },
+              { id: 'd', label: 'Soccer', correct: true },
+            ]
+          },
+          {
+            id: 'sv5', type: 'multiple',
+            text: '"She _____ the volleyball." Which verb is correct?',
+            questionEmoji: '🏐',
+            audio: 'she serves the volleyball',
+            options: [
+              { id: 'a', label: 'bounces', correct: false },
+              { id: 'b', label: 'serves', correct: true },
+              { id: 'c', label: 'kicks', correct: false },
+              { id: 'd', label: 'swims', correct: false },
+            ]
+          },
+          {
+            id: 'sv6', type: 'multiple',
+            text: '"She _____ the basketball." Which verb is correct?',
+            questionEmoji: '🏀',
+            audio: 'she bounces the basketball',
+            options: [
+              { id: 'a', label: 'kicks', correct: false },
+              { id: 'b', label: 'serves', correct: false },
+              { id: 'c', label: 'bounces', correct: true },
+              { id: 'd', label: 'runs', correct: false },
+            ]
+          },
+          {
+            id: 'sv7', type: 'multiple',
+            text: '"He _____ the soccer ball." Which verb is correct?',
+            questionEmoji: '⚽',
+            audio: 'he kicks the soccer ball',
+            options: [
+              { id: 'a', label: 'swims', correct: false },
+              { id: 'b', label: 'bounces', correct: false },
+              { id: 'c', label: 'runs', correct: false },
+              { id: 'd', label: 'kicks', correct: true },
+            ]
+          },
+          {
+            id: 'sv8', type: 'multiple',
+            text: '"She _____ in the pool." Which verb is correct?',
+            questionEmoji: '🏊',
+            audio: 'she swims in the pool',
+            options: [
+              { id: 'a', label: 'swims', correct: true },
+              { id: 'b', label: 'bounces', correct: false },
+              { id: 'c', label: 'serves', correct: false },
+              { id: 'd', label: 'kicks', correct: false },
+            ]
+          },
+        ]
+      },
+
+      // ── SECTION 4: Numbers by Tens ───────────────────────────
+      {
+        id: 'numbers',
+        title: 'Numbers by Tens',
+        desc: 'In competitions, scores can be counted using tens and ones!',
+        emoji: '🔢',
+        questions: [
+          {
+            id: 'nb1', type: 'multiple',
+            text: 'How do we say number 10 in English?',
+            questionEmoji: '🔟',
+            audio: 'ten',
+            options: [
+              { id: 'a', label: 'Twenty', correct: false },
+              { id: 'b', label: 'Ten', correct: true },
+              { id: 'c', label: 'Thirty', correct: false },
+              { id: 'd', label: 'Forty', correct: false },
+            ]
+          },
+          {
+            id: 'nb2', type: 'multiple',
+            text: 'How do we say number 20 in English?',
+            questionEmoji: '2️⃣0️⃣',
+            audio: 'twenty',
+            options: [
+              { id: 'a', label: 'Ten', correct: false },
+              { id: 'b', label: 'Fifty', correct: false },
+              { id: 'c', label: 'Thirty', correct: false },
+              { id: 'd', label: 'Twenty', correct: true },
+            ]
+          },
+          {
+            id: 'nb3', type: 'multiple',
+            text: 'How do we say number 30 in English?',
+            questionEmoji: '3️⃣0️⃣',
+            audio: 'thirty',
+            options: [
+              { id: 'a', label: 'Forty', correct: false },
+              { id: 'b', label: 'Thirty', correct: true },
+              { id: 'c', label: 'Twenty', correct: false },
+              { id: 'd', label: 'Fifty', correct: false },
+            ]
+          },
+          {
+            id: 'nb4', type: 'multiple',
+            text: 'How do we say number 40 in English?',
+            questionEmoji: '4️⃣0️⃣',
+            audio: 'forty',
+            options: [
+              { id: 'a', label: 'Thirty', correct: false },
+              { id: 'b', label: 'Twenty', correct: false },
+              { id: 'c', label: 'Forty', correct: true },
+              { id: 'd', label: 'Ten', correct: false },
+            ]
+          },
+          {
+            id: 'nb5', type: 'multiple',
+            text: 'How do we say number 50 in English?',
+            questionEmoji: '5️⃣0️⃣',
+            audio: 'fifty',
+            options: [
+              { id: 'a', label: 'Sixty', correct: false },
+              { id: 'b', label: 'Forty', correct: false },
+              { id: 'c', label: 'Fifty', correct: true },
+              { id: 'd', label: 'Thirty', correct: false },
+            ]
+          },
+          {
+            id: 'nb6', type: 'multiple',
+            text: 'The basketball team scored 44 points. How many TENS are there?',
+            questionEmoji: '🏀',
+            audio: 'four tens',
+            hint: '44 = 4 tens + 4 ones',
+            hintEmoji: '💡',
+            options: [
+              { id: 'a', label: '2 tens', correct: false },
+              { id: 'b', label: '3 tens', correct: false },
+              { id: 'c', label: '4 tens', correct: true },
+              { id: 'd', label: '5 tens', correct: false },
+            ]
+          },
+        ]
+      },
+    ];
+
+    // ─────────────────────────────────────────────────────────
+    // GAME ENGINE
+    // ─────────────────────────────────────────────────────────
+    let engine, totalScore = 0, currentGame = null, questionAnswered = false;
+
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen-' + id).classList.add('active');
+    }
+
+    function startGame() {
+      engine = new EduPlay.QuizEngine(SECTIONS, {
+        maxRepeats: 2,
+        onAllComplete: () => setTimeout(showDoneScreen, 800)
+      });
+      totalScore = 0;
+      document.getElementById('score-display').textContent = 0;
+      renderQuiz();
+      showScreen('quiz');
+    }
+
+    function restartGame() { startGame(); }
+
+    function renderQuiz() {
+      const q = engine.current();
+      if (!q) return;
+      const sec = SECTIONS[engine.currentSection];
+      document.getElementById('sec-emoji').textContent = sec.emoji;
+      document.getElementById('sec-title').textContent = sec.title;
+      document.getElementById('sec-desc').textContent = sec.desc;
+
+      const { done, total } = engine.sectionProgress();
+      const pct = total > 0 ? Math.round(done / total * 100) : 0;
+      document.getElementById('prog-text').textContent = `Question ${done + 1} of ${total}`;
+      document.getElementById('prog-pct').textContent = pct + '%';
+      document.getElementById('prog-fill').style.width = pct + '%';
+
+      const area = document.getElementById('question-area');
+      area.innerHTML = '';
+      questionAnswered = false;
+
+      const isRepeat = engine.errors[q.id] !== undefined;
+      const card = document.createElement('div');
+      card.className = 'q-card';
+
+      // label
+      const lbl = document.createElement('div');
+      lbl.className = 'q-label';
+      lbl.innerHTML = '<span>🐾 Question</span>';
+      if (isRepeat) lbl.innerHTML += '<span class="q-repeat-badge">🔁 Try again!</span>';
+      card.appendChild(lbl);
+
+      if (isRepeat) {
+        const n = document.createElement('div');
+        n.style.cssText = 'text-align:center;margin-bottom:8px;font-size:.85rem;color:#9a6700;font-weight:700;background:#fffbea;border-radius:8px;padding:5px 10px;';
+        n.textContent = '⚠️ We got this wrong — let\'s try again!';
+        card.appendChild(n);
+      }
+
+      // question text
+      const qt = document.createElement('div');
+      qt.className = 'q-text';
+      if (q.questionEmoji) {
+        const em = document.createElement('span');
+        em.style.fontSize = '2.2rem';
+        em.textContent = q.questionEmoji;
+        qt.appendChild(em);
+      }
+      const txt = document.createElement('span');
+      txt.textContent = q.text;
+      qt.appendChild(txt);
+      if (q.audio) qt.appendChild(EduPlay.UI.playBtn(q.audio));
+      card.appendChild(qt);
+
+      // hint
+      if (q.hint) {
+        const hb = document.createElement('div');
+        hb.className = 'hint-box';
+        hb.innerHTML = `<span>${q.hintEmoji || '💬'} ${q.hint}</span>`;
+        card.appendChild(hb);
+      }
+
+      // TRUE/FALSE questions (yes/no)
+      if (q.type === 'truefalse') {
+        const tfGrid = document.createElement('div');
+        tfGrid.className = 'tf-grid';
+
+        const btnYes = document.createElement('button');
+        btnYes.className = 'tf-btn';
+        btnYes.innerHTML = `<span>✅</span><span class="tf-label">YES</span>`;
+        btnYes.onclick = () => handleTFAnswer(btnYes, true, q.correctAnswer, tfGrid, q);
+
+        const btnNo = document.createElement('button');
+        btnNo.className = 'tf-btn';
+        btnNo.innerHTML = `<span>❌</span><span class="tf-label">NO</span>`;
+        btnNo.onclick = () => handleTFAnswer(btnNo, false, q.correctAnswer, tfGrid, q);
+
+        tfGrid.appendChild(btnYes);
+        tfGrid.appendChild(btnNo);
+        card.appendChild(tfGrid);
+      }
+
+      // MULTIPLE CHOICE questions
+      if (q.type === 'multiple') {
+        const grid = document.createElement('div');
+        grid.className = 'options-grid cols-2';
+        const opts = [...q.options].sort(() => Math.random() - .5);
+        opts.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.innerHTML = `<span>${opt.label}</span>`;
+          const pb = EduPlay.UI.playBtn(opt.label);
+          pb.style.marginLeft = 'auto';
+          btn.appendChild(pb);
+          btn.onclick = () => handleAnswer(btn, opt.correct, grid, q);
+          grid.appendChild(btn);
+        });
+        card.appendChild(grid);
+      }
+
+      area.appendChild(card);
+    }
+
+    function handleTFAnswer(btn, chosen, correctAnswer, grid, q) {
+      if (questionAnswered) return;
+      questionAnswered = true;
+      grid.querySelectorAll('.tf-btn').forEach(b => b.disabled = true);
+
+      const isCorrect = (chosen === correctAnswer);
+
+      // highlight correct / wrong
+      const btns = grid.querySelectorAll('.tf-btn');
+      btns.forEach(b => {
+        const isYes = b.querySelector('.tf-label').textContent === 'YES';
+        if ((isYes && correctAnswer) || (!isYes && !correctAnswer)) {
+          b.classList.add('correct');
+        }
+      });
+      if (!isCorrect) btn.classList.add('wrong');
+
+      resolveAnswer(isCorrect, q);
+    }
+
+    function handleAnswer(btn, correct, grid, q) {
+      if (questionAnswered) return;
+      questionAnswered = true;
+      grid.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        grid.querySelectorAll('.option-btn').forEach(b => {
+          const lbl = b.querySelector('span:first-child')?.textContent;
+          if (q.options.find(o => o.label === lbl)?.correct) b.classList.add('correct');
+        });
+      }
+      resolveAnswer(correct, q);
+    }
+
+    function resolveAnswer(correct, q) {
+      if (correct) {
+        totalScore += 10;
+        document.getElementById('score-display').textContent = totalScore;
+        EduPlay.UI.feedback(document.body, true, '✅ Correct!');
+        EduPlay.UI.confetti(document.body, 45);
+        EduPlay.TTS.speak('Correct! Great job!', 'en-US');
+      } else {
+        EduPlay.UI.feedback(document.body, false, '❌ Try again!');
+        EduPlay.TTS.speak('Try again!', 'en-US');
+      }
+      engine.answer(q.id, correct);
+      setTimeout(() => {
+        if (engine.phase === 'quiz') renderQuiz();
+        else if (engine.phase === 'reward') showRewardScreen();
+        else if (engine.phase === 'done') showDoneScreen();
+      }, 1400);
+    }
+
+    function showRewardScreen() {
+      showScreen('reward');
+      const secIdx = engine._pendingNext !== undefined ? engine._pendingNext - 1 : engine.currentSection;
+      const sec = SECTIONS[secIdx] || SECTIONS[engine.currentSection];
+      const next = SECTIONS[engine._pendingNext];
+      document.getElementById('reward-title').textContent = `🎉 "${sec.title}" complete!`;
+      document.getElementById('reward-desc').textContent = next
+        ? `Amazing, Sophia! Time for a mini-game! Up next: "${next.title}"!`
+        : 'Fantastic! Last mini-game!';
+
+      const randomList = [...RewardGames.list].sort(() => Math.random() - .5);
+      const selectedGameType = randomList[0];
+      if (currentGame) { currentGame.destroy?.(); currentGame = null; }
+      const area = document.getElementById('game-area');
+      area.innerHTML = '';
+      document.getElementById('game-instructions').textContent = '💡 ' + RewardGames.instructions[selectedGameType];
+      const cb = document.getElementById('continue-btn');
+      cb.style.display = 'none';
+      currentGame = RewardGames[selectedGameType](area, 45, score => {
+        totalScore += score;
+        document.getElementById('score-display').textContent = totalScore;
+        cb.style.display = 'inline-block';
+        EduPlay.UI.confetti(document.body, 30);
+      });
+    }
+
+    function advanceSection() {
+      if (currentGame) { currentGame.destroy?.(); currentGame = null; }
+      engine.advanceAfterReward();
+      renderQuiz();
+      showScreen('quiz');
+    }
+
+    function showDoneScreen() {
+      showScreen('done');
+      const prog = engine.score;
+      const pct = prog.total > 0 ? Math.round(prog.correct / prog.total * 100) : 0;
+      const stars = pct >= 90 ? 3 : pct >= 60 ? 2 : 1;
+      document.getElementById('stat-correct').innerHTML = `${prog.correct} <span>acertos</span>`;
+      document.getElementById('stat-total').innerHTML = `${prog.total} <span>tentativas</span>`;
+      document.getElementById('stat-pct').innerHTML = `${pct}% <span>precisão</span>`;
+      document.querySelectorAll('#done-stars .ep-star').forEach((el, i) =>
+        setTimeout(() => el.classList.toggle('lit', i < stars), i * 400)
+      );
+      EduPlay.UI.confetti(document.body, 80);
+      EduPlay.Progress.save('sophia-unit1', { stars, correct: prog.correct, total: prog.total, pct });
+    }
+  </script>
+</body>
+
+</html>
